@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtovutq6dek6e"]
+
+[ext_resource type="Script" path="res://PartsLibrary.gd" id="1_vfy5d"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_vfy5d")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScrollContainer-Library" type="ScrollContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer-Library" type="VBoxContainer" parent="CanvasLayer/ScrollContainer-Library"]
+layout_mode = 2
