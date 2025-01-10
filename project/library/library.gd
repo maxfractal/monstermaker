@@ -15,7 +15,7 @@ func _ready() -> void:
 	$LibraryTitle.text = name
 	
 	#start debug info -----------------------------------------------
-	print("  Folder path:", folder_path)
+	print("-Folder path:", folder_path)
 	
 	#var canvas_layer = get_node("CanvasLayer")
 	#if canvas_layer == null:
@@ -56,8 +56,8 @@ func _process(delta: float) -> void:
 	pass
 
 func load_Library():
-	print("Start loading library")
-	print("  Folder path:", folder_path)
+	print("--Start loading library")
+	print("---Folder path:", folder_path)
 	
 	#var canvas_layer = get_node("CanvasLayer")
 	#if canvas_layer == null:
@@ -79,19 +79,19 @@ func load_Library():
 	
 	#load_images_from_folder( parts_holder )
 	#check_for_scroll(scroll_container, vbox_container)
-	print("end loading library")
+	print("--End loading library")
 
 func load_images_from_folder( the_parts_holder ):
 	var dir = DirAccess.open(folder_path)
 	dir.list_dir_begin()
-	print("Directory: (%s)" % folder_path)
+	print("---Directory: (%s)" % folder_path)
 	if dir:
-		print("  directory found.")
+		print("----directory found.")
 		var file_name = dir.get_next()
 		while file_name != "":
 			if !dir.current_is_dir() and file_name.ends_with(".png"):
 				var file_path = folder_path + file_name
-				print("     - reading %s" % file_path)
+				print("-----reading %s" % file_path)
 				display_image(file_path, the_parts_holder)
 			file_name = dir.get_next()
 
@@ -100,7 +100,7 @@ func display_image(file_path, the_parts_holder):
 	if texture == null:
 		print("ERROR: Failed to load texture from path:", file_path)
 		return false
-	print("        texture loaded: %s" % file_path)
+	print("------texture loaded: %s" % file_path)
 	var texture_rect = TextureRect.new()
 	texture_rect.texture = texture
 	
@@ -116,7 +116,7 @@ func scale_texture(texture_rect):
 		var aspect_ratio
 		var new_width
 		var new_height
-		print("          old size (%d" % texture_size.x + ",%4d" % texture_size.y + ")")
+		print("--------old size (%d" % texture_size.x + ",%4d" % texture_size.y + ")")
 		if texture_size.x > texture_size.y:
 			aspect_ratio = texture_size.y / texture_size.x
 			new_width = min(library_max_tile_width, texture_size.x)
@@ -125,7 +125,7 @@ func scale_texture(texture_rect):
 			aspect_ratio = texture_size.x / texture_size.y
 			new_height = min(library_max_tile_width, texture_size.y)
 			new_width = new_height * aspect_ratio
-		print("          new size (%d" % new_width + ",%4d" % new_height + ")")
+		print("--------new size (%d" % new_width + ",%4d" % new_height + ")")
 		texture_rect.set_size(Vector2(new_width, new_height))
 		texture_rect.expand = true;
 		texture_rect.expand_mode = TextureRect.EXPAND_FIT_HEIGHT_PROPORTIONAL
@@ -148,9 +148,9 @@ func set_new_part(part: MonsterPiece):
 
 
 func part_reposition(part: MonsterPiece):
-	var field_areas = part.drop_point_detector.get_overlapping_areas()
-	var parts_areas = part.part_detector.get_overlapping_areas()
-	var index: int = 0
+	#var field_areas = part.drop_point_detector.get_overlapping_areas()
+	#var parts_areas = part.part_detector.get_overlapping_areas()
+	#var index: int = 0
 	
 	#if parts_areas.is_empty():
 		#print(field_areas.has(part_drop_area_left))
@@ -168,7 +168,7 @@ func part_reposition(part: MonsterPiece):
 		#
 		#index += 1
 
-	part.reparent(parts_holder)
-	parts_holder.move_child(part, index)
-	
+	#part.reparent(parts_holder)
+	#parts_holder.move_child(part, index)
+	return;
 	

@@ -4,7 +4,6 @@ class_name MonsterPiece extends Control
 @onready var label: Label = $Label
 @onready var name_label: Label = $NameLabel
 @onready var state_machine: MonsterPieceStateMachine = $MonsterPieceStateMachine
-@onready var drop_point_detector: Area2D = $DropPointDetector
 @onready var piece_detector: Area2D = $PieceDetector
 @onready var home_field: MarginContainer
 @onready var texture_rect: TextureRect
@@ -13,6 +12,7 @@ var index: int = 0
 
 func _ready():
 	print("monsterpiece ready start - %s" %name)
+	
 	name_label.text = name
 	#return
 	print("monsterpiece ready end - %s" %name)
