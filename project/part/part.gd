@@ -7,7 +7,7 @@ extends Control
 @onready var state_machine: PartStateMachine = $PartStateMachine
 @onready var drop_point_detector: Area2D = $DropPointDetector
 @onready var part_detector: Area2D = $PartsDetector
-@onready var home_field: Field
+@onready var home_field: MarginContainer
 @onready var texture_rect: TextureRect
 
 var index: int = 0
