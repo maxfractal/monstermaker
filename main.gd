@@ -2,10 +2,11 @@ extends Node2D
 
 # Preload the assets
 var sprite_texture = preload("res://assets/sprite.png")
+var sprite_texture2 = preload("res://art/Creatures/upper_torso.svg")
 var background_texture = preload("res://assets/background.png")
 
 func _ready():
-	print("Hello Rob!")
+	#print("Hello Rob!")
 	# Create a new Sprite2D node for the background
 	var background = Sprite2D.new()
 	background.texture = background_texture
@@ -17,3 +18,8 @@ func _ready():
 	sprite.texture = sprite_texture
 	sprite.position = Vector2(200, 200)
 	add_child(sprite)
+	
+	var torso = Sprite2D.new()
+	torso.texture = sprite_texture2
+	torso.position = Vector2(400, 500)
+	add_child(torso)
