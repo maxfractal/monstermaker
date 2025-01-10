@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3 uid="uid://jfgyvklek2dw"]
+
+[ext_resource type="Script" path="res://project/monsterpiece/monster_piece.gd" id="1_puuqk"]
+[ext_resource type="Script" path="res://project/monsterpiece/state_machine/monsterpiece_state_machine.gd" id="2_a0aeb"]
+[ext_resource type="Script" path="res://project/monsterpiece/state_machine/states/idle_monsterpiece_state.gd" id="3_qxbhg"]
+[ext_resource type="Script" path="res://project/monsterpiece/state_machine/states/clicked_monsterpiece_state.gd" id="4_2c2rx"]
+[ext_resource type="Script" path="res://project/monsterpiece/state_machine/states/drag_monsterpiece_state.gd" id="5_dpdii"]
+[ext_resource type="Script" path="res://project/monsterpiece/state_machine/states/release_monsterpiece_state.gd" id="6_bkm8r"]
+[ext_resource type="Script" path="res://project/monsterpiece/state_machine/states/hover_monsterpiece_state.gd" id="7_ycxiu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dri7j"]
+size = Vector2(166, 176)
+
+[node name="MonsterPiece" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_puuqk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.5
+offset_top = -86.0
+offset_right = 83.5
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="NameLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = -81.0
+offset_top = -84.0
+offset_right = 86.0
+offset_bottom = -57.0
+text = "Name"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -79.0
+offset_top = 56.0
+offset_right = 85.0
+offset_bottom = 79.0
+text = "State"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -77.0
+offset_top = -58.0
+offset_right = 77.0
+offset_bottom = 77.0
+expand_mode = 2
+stretch_mode = 4
+
+[node name="MonsterPieceStateMachine" type="Node" parent="."]
+script = ExtResource("2_a0aeb")
+
+[node name="Idle" type="Node" parent="MonsterPieceStateMachine"]
+script = ExtResource("3_qxbhg")
+
+[node name="Click" type="Node" parent="MonsterPieceStateMachine"]
+script = ExtResource("4_2c2rx")
+
+[node name="Drag" type="Node" parent="MonsterPieceStateMachine"]
+script = ExtResource("5_dpdii")
+
+[node name="Release" type="Node" parent="MonsterPieceStateMachine"]
+script = ExtResource("6_bkm8r")
+
+[node name="Hover" type="Node" parent="MonsterPieceStateMachine"]
+script = ExtResource("7_ycxiu")
+
+[node name="PieceDetector" type="Area2D" parent="."]
+position = Vector2(0, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PieceDetector"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_dri7j")

@@ -1,5 +1,4 @@
-class_name Field
-extends MarginContainer
+class_name Field extends MarginContainer
 
 @onready var card_drop_area_right: Area2D = $CardDropAreaRight
 @onready var card_drop_area_left: Area2D = $CardDropAreaLeft
@@ -7,12 +6,16 @@ extends MarginContainer
 
 	
 func _ready():
+	print("field ready start - %s" %name)
 	$Label.text = name
 	
 	# hook up the pre-made cards to the parent CardsHolder
 	for child in cards_holder.get_children():
+		#print(child)
 		var card := child as Card
+		print("  parenting card %s" %card.name)
 		card.home_field = self
+	print("field ready end - %s" %name)
 
 func return_card_starting_position(card: Card):
 	card.reparent(cards_holder)

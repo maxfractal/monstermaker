@@ -1,5 +1,4 @@
-class_name Card
-extends Control
+class_name Card extends Control
 
 @onready var color_rect: ColorRect = $ColorRect
 @onready var label: Label = $Label
@@ -13,6 +12,7 @@ extends Control
 var index: int = 0
 
 func _ready():
+	print("card ready start - %s" %name)
 	name_label.text = name
 
 func _input(event):

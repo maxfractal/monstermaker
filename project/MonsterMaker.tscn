@@ -1,17 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://buh3412b0qtpp"]
+[gd_scene load_steps=8 format=3 uid="uid://buh3412b0qtpp"]
 
 [ext_resource type="PackedScene" uid="uid://biim2lxri0akl" path="res://project/field/field.tscn" id="1_fkhir"]
-[ext_resource type="PackedScene" uid="uid://3trgkf0u68ry" path="res://project/card/card.tscn" id="2_5f2as"]
+[ext_resource type="PackedScene" uid="uid://jfgyvklek2dw" path="res://project/monsterpiece/monster_piece.tscn" id="2_65yt1"]
 [ext_resource type="PackedScene" uid="uid://ciqgnvw1xg7rc" path="res://project/library/library.tscn" id="2_xf0k2"]
-[ext_resource type="Texture2D" uid="uid://bbv2hdb1mlmcn" path="res://art/Creatures/Skeleton/SkeletonPirate_02_Head-2-right.png" id="3_rw2yu"]
-[ext_resource type="Texture2D" uid="uid://d4aa1sr52cbhg" path="res://art/Creatures/Skeleton/SkeletonPirate_01_upper-Torso-large.png" id="4_et0m5"]
-[ext_resource type="Texture2D" uid="uid://cv7ak35d28i7m" path="res://art/Creatures/Skeleton/SkeletonPirate_02_Arm-2-right.png" id="5_khvwg"]
+[ext_resource type="PackedScene" uid="uid://3trgkf0u68ry" path="res://project/card/card.tscn" id="4_bv8hq"]
+[ext_resource type="Texture2D" uid="uid://dfo74gw5mmbu" path="res://art/Creatures/Skeleton/SkeletonPirate_04_Head-3-right.png" id="5_et247"]
+[ext_resource type="Texture2D" uid="uid://d4aa1sr52cbhg" path="res://art/Creatures/Skeleton/SkeletonPirate_01_upper-Torso-large.png" id="6_42jks"]
+[ext_resource type="Texture2D" uid="uid://cghl6hgwssuvw" path="res://art/Creatures/Skeleton/SkeletonPirate_04_Pelvis-Large.png" id="7_5nghx"]
 
 [node name="Game" type="Node"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." groups=["fields"]]
 
 [node name="PartsLibrary" parent="CanvasLayer" instance=ExtResource("2_xf0k2")]
+
+[node name="MonsterPiece" parent="CanvasLayer/PartsLibrary" instance=ExtResource("2_65yt1")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="Field1" parent="CanvasLayer" instance=ExtResource("1_fkhir")]
 anchor_left = 0.239
@@ -23,36 +29,69 @@ offset_right = 149.496
 offset_bottom = 1.0
 grow_vertical = 2
 
-[node name="Card" parent="CanvasLayer/Field1/CardsHolder" index="0" instance=ExtResource("2_5f2as")]
-layout_mode = 2
+[node name="CardsHolder" parent="CanvasLayer/Field1" index="2"]
+alignment = 0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Field1/CardsHolder/Card"]
-layout_mode = 0
-offset_right = 99.0
-offset_bottom = 146.0
-texture = ExtResource("3_rw2yu")
-expand_mode = 5
-stretch_mode = 4
-
-[node name="Card2" parent="CanvasLayer/Field1/CardsHolder" index="1" instance=ExtResource("2_5f2as")]
+[node name="Card2" parent="CanvasLayer/Field1/CardsHolder" index="0" instance=ExtResource("4_bv8hq")]
 layout_mode = 2
+size_flags_vertical = 1
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Field1/CardsHolder/Card2"]
-layout_mode = 0
-offset_right = 99.0
-offset_bottom = 146.0
-texture = ExtResource("4_et0m5")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0108
+offset_top = -67.0
+offset_right = 51.0108
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_et247")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Card3" parent="CanvasLayer/Field1/CardsHolder" index="1" instance=ExtResource("4_bv8hq")]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Field1/CardsHolder/Card3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.5
+offset_top = -73.0
+offset_right = 48.5
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_42jks")
 expand_mode = 5
 stretch_mode = 4
 
-[node name="Card3" parent="CanvasLayer/Field1/CardsHolder" index="2" instance=ExtResource("2_5f2as")]
+[node name="Card4" parent="CanvasLayer/Field1/CardsHolder" index="2" instance=ExtResource("4_bv8hq")]
 layout_mode = 2
+size_flags_vertical = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Field1/CardsHolder/Card3"]
-layout_mode = 0
-offset_right = 99.0
-offset_bottom = 146.0
-texture = ExtResource("5_khvwg")
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Field1/CardsHolder/Card4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.5
+offset_top = -73.5946
+offset_right = 50.5
+offset_bottom = 73.5946
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_5nghx")
 expand_mode = 5
 stretch_mode = 4
 

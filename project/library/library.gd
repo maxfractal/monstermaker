@@ -77,10 +77,11 @@ func load_Library():
 		print("PartsContainer node not found")
 		return
 	
-	#load_images_from_folder( scroll_container, parts_holder )
+	#load_images_from_folder( parts_holder )
 	#check_for_scroll(scroll_container, vbox_container)
+	print("end loading library")
 
-func load_images_from_folder( scroll_container, parts_holder ):
+func load_images_from_folder( the_parts_holder ):
 	var dir = DirAccess.open(folder_path)
 	dir.list_dir_begin()
 	print("Directory: (%s)" % folder_path)
@@ -91,10 +92,10 @@ func load_images_from_folder( scroll_container, parts_holder ):
 			if !dir.current_is_dir() and file_name.ends_with(".png"):
 				var file_path = folder_path + file_name
 				print("     - reading %s" % file_path)
-				display_image(file_path, scroll_container, parts_holder)
+				display_image(file_path, the_parts_holder)
 			file_name = dir.get_next()
 
-func display_image(file_path, scroll_container, parts_holder):
+func display_image(file_path, the_parts_holder):
 	var texture = load(file_path)
 	if texture == null:
 		print("ERROR: Failed to load texture from path:", file_path)
@@ -105,8 +106,8 @@ func display_image(file_path, scroll_container, parts_holder):
 	
 	scale_texture(texture_rect)
 	
-	var new_part = Part.new()
-	parts_holder.add_child(new_part)
+	var new_part = MonsterPiece.new()
+	the_parts_holder.add_child(new_part)
 	#parts_holder.add_child(texture_rect)
 
 func scale_texture(texture_rect):
@@ -136,17 +137,17 @@ func check_for_scroll(scroll_container, vbox_container):
 	else:
 		scroll_container.scroll_vertical_enabled = false
 
-func return_part_starting_position(part: Part):
+func return_part_starting_position(part: MonsterPiece):
 	part.reparent(parts_holder)
 	parts_holder.move_child(part, part.index)
 
 
-func set_new_part(part: Part):
+func set_new_part(part: MonsterPiece):
 	part_reposition(part)
 	part.home_field = self
 
 
-func part_reposition(part: Part):
+func part_reposition(part: MonsterPiece):
 	var field_areas = part.drop_point_detector.get_overlapping_areas()
 	var parts_areas = part.part_detector.get_overlapping_areas()
 	var index: int = 0

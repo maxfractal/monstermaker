@@ -1,15 +1,15 @@
-class_name PartStateMachine
+class_name MonsterPieceStateMachine
 extends Node
 
-@export var initial_state: PartState
+@export var initial_state: MonsterPieceState
 
-var current_state: PartState
+var current_state: MonsterPieceState
 var states: Dictionary = {}
 
 
 func _ready():
 	for child in get_children():
-		if child is PartState:
+		if child is MonsterPieceState:
 			states[child.name.to_lower()] = child
 			child.transitioned.connect(on_child_transition)
 			
@@ -18,7 +18,7 @@ func _ready():
 					states[child.name.to_lower() + '/' + sub_child.name.to_lower()] = sub_child
 					sub_child.transitioned.connect(on_child_transition)
 
-	print(states)
+	#print(states)
 	
 	if initial_state:
 		initial_state.call_deferred("_enter")
@@ -46,7 +46,7 @@ func on_mouse_exited():
 
 
 func on_child_transition(new_state_name):
-	var new_state: PartState = states.get(new_state_name.to_lower())
+	var new_state: MonsterPieceState = states.get(new_state_name.to_lower())
 	if !new_state:
 		prints(current_state, "transition to no state")
 		return

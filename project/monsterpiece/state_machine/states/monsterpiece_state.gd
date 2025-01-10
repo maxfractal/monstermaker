@@ -1,10 +1,10 @@
-class_name PartState
+class_name MonsterPieceState
 extends Node
 
 signal transitioned
 
 
-@export var part: Part
+@export var monsterpiece: MonsterPiece
 
 
 func _enter():
