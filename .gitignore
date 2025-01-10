@@ -1,4 +1,4 @@
-
-.godot/.gdignore
-/.godot
-*.tmp
+# Godot 4+ specific ignores
+.godot/
+/android/
+.vscode
