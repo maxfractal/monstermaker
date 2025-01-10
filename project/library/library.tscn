@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciqgnvw1xg7rc"]
+
+[ext_resource type="Script" path="res://project/library/library.gd" id="1_3o500"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06w7q"]
+size = Vector2(225, 619)
+
+[node name="Library" type="MarginContainer"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 227.0
+grow_vertical = 2
+script = ExtResource("1_3o500")
+
+[node name="LibraryPanel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="LibraryTitle" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Parts Library"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PartsScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+
+[node name="PartsContainer" type="VBoxContainer" parent="PartsScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LibraryPartDrop" type="Area2D" parent="."]
+position = Vector2(0, 25)
+
+[node name="LibraryDropCollisionShape2D" type="CollisionShape2D" parent="LibraryPartDrop"]
+position = Vector2(113.5, 312.5)
+shape = SubResource("RectangleShape2D_06w7q")
