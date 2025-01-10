@@ -1,18 +1,20 @@
-class_name Card
+class_name Part
 extends Control
 
 @onready var color_rect: ColorRect = $ColorRect
 @onready var label: Label = $Label
 @onready var name_label: Label = %NameLabel
-@onready var state_machine: CardStateMachine = $CardStateMachine
+@onready var state_machine: PartStateMachine = $PartStateMachine
 @onready var drop_point_detector: Area2D = $DropPointDetector
-@onready var card_detector: Area2D = $CardsDetector
+@onready var part_detector: Area2D = $PartsDetector
 @onready var home_field: Field
 @onready var texture_rect: TextureRect
 
 var index: int = 0
 
 func _ready():
+	print("part ready start")
+	print ("  %s" %name)
 	name_label.text = name
 
 func _input(event):

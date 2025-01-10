@@ -1,19 +1,19 @@
 class_name Field
 extends MarginContainer
 
-
 @onready var card_drop_area_right: Area2D = $CardDropAreaRight
 @onready var card_drop_area_left: Area2D = $CardDropAreaLeft
 @onready var cards_holder: VBoxContainer = $CardsHolder
 
 
+	
 func _ready():
 	$Label.text = name
 	
+	# hook up the pre-made cards to the parent CardsHolder
 	for child in cards_holder.get_children():
 		var card := child as Card
 		card.home_field = self
-
 
 func return_card_starting_position(card: Card):
 	card.reparent(cards_holder)
