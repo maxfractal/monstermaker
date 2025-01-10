@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://buh3412b0qtpp"]
+[gd_scene load_steps=7 format=3 uid="uid://buh3412b0qtpp"]
 
 [ext_resource type="PackedScene" uid="uid://biim2lxri0akl" path="res://project/field/field.tscn" id="1_fkhir"]
 [ext_resource type="PackedScene" uid="uid://3trgkf0u68ry" path="res://project/card/card.tscn" id="2_5f2as"]
+[ext_resource type="PackedScene" uid="uid://ciqgnvw1xg7rc" path="res://project/library/library.tscn" id="2_xf0k2"]
 [ext_resource type="Texture2D" uid="uid://bbv2hdb1mlmcn" path="res://art/Creatures/Skeleton/SkeletonPirate_02_Head-2-right.png" id="3_rw2yu"]
 [ext_resource type="Texture2D" uid="uid://d4aa1sr52cbhg" path="res://art/Creatures/Skeleton/SkeletonPirate_01_upper-Torso-large.png" id="4_et0m5"]
 [ext_resource type="Texture2D" uid="uid://cv7ak35d28i7m" path="res://art/Creatures/Skeleton/SkeletonPirate_02_Arm-2-right.png" id="5_khvwg"]
@@ -9,6 +10,8 @@
 [node name="Game" type="Node"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." groups=["fields"]]
+
+[node name="PartsLibrary" parent="CanvasLayer" instance=ExtResource("2_xf0k2")]
 
 [node name="Field1" parent="CanvasLayer" instance=ExtResource("1_fkhir")]
 anchor_left = 0.239

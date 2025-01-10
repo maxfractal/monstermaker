@@ -1,22 +1,18 @@
-#class_name Library
-
-extends MarginContainer
+class_name Library extends MarginContainer
 #extends Field
+
+@onready var parts_holder: VBoxContainer = $PartsScrollContainer/PartsContainer
+@onready var part_drop: Area2D = $LibraryPartDrop
 
 var folder_path = "res://art/Creatures/Pirate/"  # Replace with your folder path
 #var folder_path = "res://art/Creatures/Skeleton/"  # Replace with your folder path
 var library_max_tile_width = 100 
 var library_max_tile_height = 100 
 
-@onready var parts_holder: VBoxContainer = $PartsHolder
-@onready var part_drop_area_right: Area2D = $PartDropAreaRight
-@onready var part_drop_area_left: Area2D = $PartDropAreaLeft
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print("field ready start")
-	$Label.text = name
+	print("Library ready start")
+	$LibraryTitle.text = name
 	
 	#start debug info -----------------------------------------------
 	print("  Folder path:", folder_path)
@@ -35,13 +31,13 @@ func _ready() -> void:
 		#print("Library node not found")
 		#return
 
-	var scroll_container = get_node("PartsScroller")
+	var scroll_container = get_node("PartsScrollContainer")
 	if scroll_container == null:
-		print("ScrollContainer node not found")
+		print("PartsScrollContainer node not found")
 		return
-	parts_holder = scroll_container.get_node("PartsHolder")
+	parts_holder = scroll_container.get_node("PartsContainer")
 	if parts_holder == null:
-		print("PartsHolder node not found")
+		print("PartsContainer node not found")
 		return
 	#end debug info -------------------------------------------------
 	
@@ -72,13 +68,13 @@ func load_Library():
 	#for child in canvas_layer.get_children():
 		#print("   %s" % child.name)
 
-	var scroll_container = get_node("PartsScroller")
+	var scroll_container = get_node("PartsScrollContainer")
 	if scroll_container == null:
-		print("ScrollContainer node not found")
+		print("PartsScrollContainer node not found")
 		return
-	parts_holder = scroll_container.get_node("PartsHolder")
+	parts_holder = scroll_container.get_node("PartsContainer")
 	if parts_holder == null:
-		print("VBoxContainer node not found")
+		print("PartsContainer node not found")
 		return
 	
 	#load_images_from_folder( scroll_container, parts_holder )
@@ -155,21 +151,21 @@ func part_reposition(part: Part):
 	var parts_areas = part.part_detector.get_overlapping_areas()
 	var index: int = 0
 	
-	if parts_areas.is_empty():
-		print(field_areas.has(part_drop_area_left))
-		if field_areas.has(part_drop_area_right):
-			index = parts_holder.get_children().size()
-	elif parts_areas.size() == 1:
-		if field_areas.has(part_drop_area_left):
-			index = parts_areas[0].get_parent().get_index()
-		else:
-			index = parts_areas[0].get_parent().get_index() + 1
-	else:
-		index = parts_areas[0].get_parent().get_index()
-		if index > parts_areas[1].get_parent().get_index():
-			index = parts_areas[1].get_parent().get_index()
-		
-		index += 1
+	#if parts_areas.is_empty():
+		#print(field_areas.has(part_drop_area_left))
+		#if field_areas.has(part_drop_area_right):
+			#index = parts_holder.get_children().size()
+	#elif parts_areas.size() == 1:
+		#if field_areas.has(part_drop_area_left):
+			#index = parts_areas[0].get_parent().get_index()
+		#else:
+			#index = parts_areas[0].get_parent().get_index() + 1
+	#else:
+		#index = parts_areas[0].get_parent().get_index()
+		#if index > parts_areas[1].get_parent().get_index():
+			#index = parts_areas[1].get_parent().get_index()
+		#
+		#index += 1
 
 	part.reparent(parts_holder)
 	parts_holder.move_child(part, index)

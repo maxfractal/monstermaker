@@ -5,7 +5,6 @@ extends MarginContainer
 @onready var card_drop_area_left: Area2D = $CardDropAreaLeft
 @onready var cards_holder: VBoxContainer = $CardsHolder
 
-
 	
 func _ready():
 	$Label.text = name
