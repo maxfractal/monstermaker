@@ -21,5 +21,5 @@ func _ready():
 	
 	var torso = Sprite2D.new()
 	torso.texture = sprite_texture2
-	torso.position = Vector2(400, 500)
+	torso.position = Vector2(100, 500)
 	add_child(torso)
