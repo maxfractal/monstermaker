@@ -3,7 +3,6 @@ class_name Field extends MarginContainer
 @onready var card_drop_area_right: Area2D = $CardDropAreaRight
 @onready var card_drop_area_left: Area2D = $CardDropAreaLeft
 @onready var cards_holder: VBoxContainer = $CardsHolder
-
 	
 func _ready():
 	#print("field ready start - %s" %name)

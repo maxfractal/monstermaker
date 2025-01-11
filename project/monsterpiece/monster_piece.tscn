@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://jfgyvklek2dw"]
+[gd_scene load_steps=9 format=3 uid="uid://jfgyvklek2dw"]
 
 [ext_resource type="Script" path="res://project/monsterpiece/monster_piece.gd" id="1_puuqk"]
 [ext_resource type="Script" path="res://project/monsterpiece/state_machine/monsterpiece_state_machine.gd" id="2_a0aeb"]
-[ext_resource type="Texture2D" uid="uid://c5p04scc8becj" path="res://art/Creatures/Skeleton/SkeletonPirate_05_Head4-left.png" id="2_rnuex"]
 [ext_resource type="Script" path="res://project/monsterpiece/state_machine/states/idle_monsterpiece_state.gd" id="3_qxbhg"]
 [ext_resource type="Script" path="res://project/monsterpiece/state_machine/states/clicked_monsterpiece_state.gd" id="4_2c2rx"]
 [ext_resource type="Script" path="res://project/monsterpiece/state_machine/states/drag_monsterpiece_state.gd" id="5_dpdii"]
@@ -56,6 +55,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MPTextureRect" type="TextureRect" parent="."]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -66,9 +66,8 @@ offset_right = 16.0
 offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_rnuex")
-expand_mode = 2
-stretch_mode = 4
+expand_mode = 3
+stretch_mode = 5
 
 [node name="MonsterPieceStateMachine" type="Node" parent="."]
 script = ExtResource("2_a0aeb")

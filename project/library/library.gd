@@ -74,7 +74,7 @@ func load_Library():
 				print("-----reading %s" % file_path)
 				
 				# load the image, instantiate a piece and attach the image to it
-				generate_piece(file_path, pieces_holder)
+				generate_piece(file_path)
 			file_name = dir.get_next()
 	
 	# after the pieces are all created, see if the scroll bar needs to be visible or not
@@ -98,19 +98,19 @@ func load_Library():
 #		- attach the image to the piece
 #		- add the piece to the piece container
 #
-func generate_piece(file_path, the_pieces_holder):
+func generate_piece(file_path):
 	var loadedTexture = load(file_path)
 	if loadedTexture == null:
 		print("ERROR: Failed to load texture from path:", file_path)
 		return false
 
+	# create a new MonsterPiece and add it to the container
 	var new_part : MonsterPiece = new_piece_scene.instantiate()
-	the_pieces_holder.add_child(new_part)
+	pieces_holder.add_child(new_part)
 
-	var new_texturerect = TextureRect.new()
-	new_texturerect.texture = loadedTexture
-	scale_texture(new_texturerect)
-	new_part.texture_rect = new_texturerect
+	# fill in the textureRect, set the new texture, then add it to the new piece
+	new_part.texture_rect.texture = loadedTexture
+	scale_texture(new_part.texture_rect)
 	return
 	
 #	scale_texture will resize the TextureRect so the image fits in the piece
@@ -118,26 +118,26 @@ func generate_piece(file_path, the_pieces_holder):
 #
 func scale_texture(texture_rect):
 	if texture_rect.texture:
-		#var texture_size = texture_rect.texture.get_size()
-		#var aspect_ratio
-		#var new_width
-		#var new_height
-		##print("--------old size (%d" % texture_size.x + ",%4d" % texture_size.y + ")")
-		#
-		##	figure out which dimension is larger so the thumbnail is as large
-		##	as it can be
-		#if texture_size.x > texture_size.y:
-			#aspect_ratio = texture_size.y / texture_size.x
-			#new_width = min(LIBRARY_TILE_WIDTH_MAX, texture_size.x)
-			#new_height = new_width * aspect_ratio
-		#else:
-			#aspect_ratio = texture_size.x / texture_size.y
-			#new_height = min(LIBRARY_TILE_WIDTH_MAX, texture_size.y)
-			#new_width = new_height * aspect_ratio
-		##print("--------new size (%d" % new_width + ",%4d" % new_height + ")")
-		#
-		## set a bunch of TextureRect parameters
-		#texture_rect.set_size(Vector2(new_width, new_height))
+		var texture_size = texture_rect.texture.get_size()
+		var aspect_ratio
+		var new_width
+		var new_height
+		
+		#	figure out which dimension is larger so the thumbnail is as large
+		#	as it can be
+		print("--------old size (%d" % texture_size.x + ",%4d" % texture_size.y + ")")
+		if texture_size.x > texture_size.y:
+			aspect_ratio = texture_size.y / texture_size.x
+			new_width = min(LIBRARY_TILE_WIDTH_MAX, texture_size.x)
+			new_height = new_width * aspect_ratio
+		else:
+			aspect_ratio = texture_size.x / texture_size.y
+			new_height = min(LIBRARY_TILE_WIDTH_MAX, texture_size.y)
+			new_width = new_height * aspect_ratio
+		print("--------new size (%d" % new_width + ",%4d" % new_height + ")")
+		
+		# set a bunch of TextureRect parameters
+		texture_rect.set_size(Vector2(new_width, new_height))
 		texture_rect.expand = true;
 		texture_rect.expand_mode = TextureRect.EXPAND_FIT_HEIGHT_PROPORTIONAL
 		texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
