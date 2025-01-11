@@ -199,8 +199,8 @@ func _on_dialog_canceled():
 	# if the dialog is CANCELLED then put a hard-coded value in
 	# this is for DEBUG ONLY
 	if (DEBUG_MODE):
-		#folder_path = "res://art/Creatures/Pirate/"
-		folder_path = "res://art/Creatures/Villager/"
+		folder_path = "res://art/Creatures/Pirate/"
+		#folder_path = "res://art/Creatures/Villager/"
 		load_Library()
 	return
 

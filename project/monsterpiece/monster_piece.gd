@@ -22,7 +22,7 @@ var index: int = 0
 #-------------------------------------------------------------------------------
 func _ready():
 	#print("monsterpiece ready start - %s" %name)
-	name_label.text = name
+	name_label.text = " "
 
 func _input(event):
 	state_machine.on_input(event)
