@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ch8lasar312hd"]
+
+[ext_resource type="Texture2D" uid="uid://c07h67u5wyot3" path="res://assets/background.png" id="1_yakyi"]
+[ext_resource type="Texture2D" uid="uid://55wnhne84m4h" path="res://icon.svg" id="2_jgbcg"]
+
+[node name="loadingScreen" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4954, 2222)
+scale = Vector2(8.59652, 6.80923)
+texture = ExtResource("1_yakyi")
+
+[node name="MadewithGodot" type="Sprite2D" parent="."]
+position = Vector2(606, 362)
+scale = Vector2(7.80469, 6.83594)
+texture = ExtResource("2_jgbcg")
