@@ -13,8 +13,9 @@ class_name Library extends MarginContainer
 #-------------------------------------------------------------------------------
 # constants
 #-------------------------------------------------------------------------------
-const LIBRARY_MAX_TILE_WIDTH = 100 
-const LIBRARY_MAX_TILE_HEIGHT = 100 
+const LIBRARY_TILE_WIDTH_MAX = 100 
+const LIBRARY_TILE_HEIGHT_MAX = 100
+const LIBRARY_TILE_GAP = 10
 const DEBUG_MODE = true;
 const NUM_PIECES_TO_ACTIVATE_SCROLLBAR = 6
 
@@ -110,6 +111,7 @@ func load_Library():
 	# after the pieces are all created, see if the scroll bar needs to be visible or not
 	scroll_container.scroll_vertical = ScrollContainer.ScrollMode.SCROLL_MODE_AUTO
 	#check_for_scroll(scroll_container, the_parts_holder)
+	the_parts_holder.add_theme_constant_override("separation", (LIBRARY_TILE_HEIGHT_MAX + LIBRARY_TILE_GAP) )
 	
 	print("--End loading library")
 
@@ -124,7 +126,6 @@ func generate_piece(file_path, the_parts_holder):
 	if loadedTexture == null:
 		print("ERROR: Failed to load texture from path:", file_path)
 		return false
-	print("------texture loaded: %s" % file_path)
 
 	var new_part : MonsterPiece = new_piece_scene.instantiate()
 	the_parts_holder.add_child(new_part)
@@ -132,9 +133,9 @@ func generate_piece(file_path, the_parts_holder):
 	var new_texturerect = TextureRect.new()
 	new_texturerect.texture = loadedTexture
 	scale_texture(new_texturerect)
-	
 	new_part.texture_rect = new_texturerect
-
+	return
+	
 #	scale_texture will resize the TextureRect so the image fits in the piece
 #	container while maintaining it's aspect ratio
 #
@@ -150,11 +151,11 @@ func scale_texture(texture_rect):
 		#	as it can be
 		if texture_size.x > texture_size.y:
 			aspect_ratio = texture_size.y / texture_size.x
-			new_width = min(LIBRARY_MAX_TILE_WIDTH, texture_size.x)
+			new_width = min(LIBRARY_TILE_WIDTH_MAX, texture_size.x)
 			new_height = new_width * aspect_ratio
 		else:
 			aspect_ratio = texture_size.x / texture_size.y
-			new_height = min(LIBRARY_MAX_TILE_WIDTH, texture_size.y)
+			new_height = min(LIBRARY_TILE_WIDTH_MAX, texture_size.y)
 			new_width = new_height * aspect_ratio
 		print("--------new size (%d" % new_width + ",%4d" % new_height + ")")
 		

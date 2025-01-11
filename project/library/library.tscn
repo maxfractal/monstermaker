@@ -8,9 +8,10 @@
 size = Vector2(225, 619)
 
 [node name="Library" type="MarginContainer"]
-anchors_preset = 9
+anchors_preset = -1
 anchor_bottom = 1.0
-offset_right = 227.0
+offset_top = -3.0
+offset_right = 230.0
 grow_vertical = 2
 script = ExtResource("1_3o500")
 
@@ -25,12 +26,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PartsScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+size_flags_vertical = 0
 
 [node name="PartsContainer" type="VBoxContainer" parent="PartsScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 10
 
 [node name="LibraryPartDrop" type="Area2D" parent="."]
 position = Vector2(0, 25)
