@@ -10,8 +10,8 @@ var folder_path = "res://art/Creatures/Pirate/"  # Replace with your folder path
 #var folder_path = "res://art/Creatures/Skeleton/"  # Replace with your folder path
 var library_max_tile_width = 100 
 var library_max_tile_height = 100 
+var debug_mode = true;
 
-	
 ## Function to handle folder selection signal
 #func _on_folder_selected(folder_path):
 	## Perform actions with the selected folder path
@@ -32,8 +32,8 @@ func _ready() -> void:
 	print("Library ready start")
 	$LibraryTitle.text = name
 	
-	file_dialog.connect("folder_selected", Callable(self, "_on_folder_selected"))
-	file_dialog.connect("dialog_canceled", Callable(self, "_on_dialog_canceled"))
+	file_dialog.connect("dir_selected", Callable(self, "_on_folder_selected"))
+	file_dialog.connect("canceled", Callable(self, "_on_dialog_canceled"))
 
 	#start debug info -----------------------------------------------
 	print("-Folder path:", folder_path)
@@ -196,9 +196,16 @@ func _on_folder_selected(selected_folder_path):
 	# Perform actions with the selected folder path
 	print("Folder dialog returned path: ", selected_folder_path)
 	folder_path = selected_folder_path + "/"
+
 	load_Library()
 
 # Function to handle dialog canceled signal
 func _on_dialog_canceled():
 	# Perform actions when the dialog is canceled
 	print("Library Folder Dialog was canceled")
+
+	if (debug_mode):
+		# if the dialog is CANCELLED then put a hard-coded value in
+		# this is for DEBUG ONLY
+		folder_path = "res://art/Creatures/Pirate/"
+		load_Library()
