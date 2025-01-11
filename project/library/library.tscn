@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ciqgnvw1xg7rc"]
+[gd_scene load_steps=5 format=3 uid="uid://ciqgnvw1xg7rc"]
 
 [ext_resource type="Script" path="res://project/library/library.gd" id="1_3o500"]
+[ext_resource type="Script" path="res://project/library/load_library_button.gd" id="2_c77rh"]
+[ext_resource type="Script" path="res://project/library/library_folder_select_dialog.gd" id="3_wlnhf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06w7q"]
 size = Vector2(225, 619)
@@ -36,3 +38,19 @@ position = Vector2(0, 25)
 [node name="LibraryDropCollisionShape2D" type="CollisionShape2D" parent="LibraryPartDrop"]
 position = Vector2(113.5, 312.5)
 shape = SubResource("RectangleShape2D_06w7q")
+
+[node name="LoadLibraryButton" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Load"
+script = ExtResource("2_c77rh")
+
+[node name="LibraryFolderSelectDialog" type="FileDialog" parent="LoadLibraryButton"]
+auto_translate_mode = 1
+title = "Open a Directory"
+size = Vector2i(303, 500)
+ok_button_text = "Select Current Folder"
+file_mode = 2
+root_subfolder = "art/Creatures"
+script = ExtResource("3_wlnhf")

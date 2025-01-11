@@ -3,17 +3,38 @@ class_name Library extends MarginContainer
 
 @onready var parts_holder: VBoxContainer = $PartsScrollContainer/PartsContainer
 @onready var part_drop: Area2D = $LibraryPartDrop
+@onready var file_dialog: FileDialog = $LoadLibraryButton/LibraryFolderSelectDialog
+@onready var load_button: Button = $LoadLibraryButton
 
 var folder_path = "res://art/Creatures/Pirate/"  # Replace with your folder path
 #var folder_path = "res://art/Creatures/Skeleton/"  # Replace with your folder path
 var library_max_tile_width = 100 
 var library_max_tile_height = 100 
 
+	
+## Function to handle folder selection signal
+#func _on_folder_selected(folder_path):
+	## Perform actions with the selected folder path
+	#print("Folder selected: ", folder_path)
+#
+## Function to handle dialog canceled signal
+#func _on_dialog_canceled():
+	## Perform actions when the dialog is canceled
+	#print("Dialog was canceled")
+#
+## Connect the signals
+#func _ready():
+	#connect("pressed", Callable(self, "_on_button_pressed"))
+#
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("Library ready start")
 	$LibraryTitle.text = name
 	
+	file_dialog.connect("folder_selected", Callable(self, "_on_folder_selected"))
+	file_dialog.connect("dialog_canceled", Callable(self, "_on_dialog_canceled"))
+
 	#start debug info -----------------------------------------------
 	print("-Folder path:", folder_path)
 	
@@ -46,10 +67,7 @@ func _ready() -> void:
 		#print("part %s" %child.name)
 		#var part := child as Part
 		#part.home_field = self
-		
-	# cycle through a creature parts folder + build parts for each part
-	load_Library()
-
+	return
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -77,7 +95,7 @@ func load_Library():
 		print("PartsContainer node not found")
 		return
 	
-	#load_images_from_folder( parts_holder )
+	load_images_from_folder( parts_holder )
 	#check_for_scroll(scroll_container, vbox_container)
 	print("--End loading library")
 
@@ -171,4 +189,16 @@ func part_reposition(part: MonsterPiece):
 	#part.reparent(parts_holder)
 	#parts_holder.move_child(part, index)
 	return;
+
 	
+# Function to handle folder selection signal
+func _on_folder_selected(selected_folder_path):
+	# Perform actions with the selected folder path
+	print("Folder dialog returned path: ", selected_folder_path)
+	folder_path = selected_folder_path + "/"
+	load_Library()
+
+# Function to handle dialog canceled signal
+func _on_dialog_canceled():
+	# Perform actions when the dialog is canceled
+	print("Library Folder Dialog was canceled")

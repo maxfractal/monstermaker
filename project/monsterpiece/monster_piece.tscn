@@ -16,7 +16,7 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_puuqk")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="MPColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -31,7 +31,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="NameLabel" type="Label" parent="."]
+[node name="MPNameLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = -81.0
 offset_top = -84.0
@@ -40,7 +40,7 @@ offset_bottom = -57.0
 text = "Name"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="."]
+[node name="MPLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = -79.0
 offset_top = 56.0
@@ -50,7 +50,7 @@ text = "State"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="MPTextureRect" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = -77.0
 offset_top = -58.0
@@ -77,9 +77,9 @@ script = ExtResource("6_bkm8r")
 [node name="Hover" type="Node" parent="MonsterPieceStateMachine"]
 script = ExtResource("7_ycxiu")
 
-[node name="PieceDetector" type="Area2D" parent="."]
+[node name="MPDetector" type="Area2D" parent="."]
 position = Vector2(0, 4)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PieceDetector"]
+[node name="MPCollisionShape2D" type="CollisionShape2D" parent="MPDetector"]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_dri7j")

@@ -1,10 +1,11 @@
 class_name MonsterPiece extends Control
 
-@onready var color_rect: ColorRect = $ColorRect
-@onready var label: Label = $Label
-@onready var name_label: Label = $NameLabel
+@onready var color_rect: ColorRect = $MPColorRect
+@onready var label: Label = $MPLabel
+@onready var name_label: Label = $MPNameLabel
 @onready var state_machine: MonsterPieceStateMachine = $MonsterPieceStateMachine
-@onready var piece_detector: Area2D = $PieceDetector
+@onready var piece_detector: Area2D = $MPDetector
+
 @onready var home_field: MarginContainer
 @onready var texture_rect: TextureRect
 

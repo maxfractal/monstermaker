@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://buh3412b0qtpp"]
+[gd_scene load_steps=7 format=3 uid="uid://buh3412b0qtpp"]
 
 [ext_resource type="PackedScene" uid="uid://biim2lxri0akl" path="res://project/field/field.tscn" id="1_fkhir"]
-[ext_resource type="PackedScene" uid="uid://jfgyvklek2dw" path="res://project/monsterpiece/monster_piece.tscn" id="2_65yt1"]
 [ext_resource type="PackedScene" uid="uid://ciqgnvw1xg7rc" path="res://project/library/library.tscn" id="2_xf0k2"]
 [ext_resource type="PackedScene" uid="uid://3trgkf0u68ry" path="res://project/card/card.tscn" id="4_bv8hq"]
 [ext_resource type="Texture2D" uid="uid://dfo74gw5mmbu" path="res://art/Creatures/Skeleton/SkeletonPirate_04_Head-3-right.png" id="5_et247"]
@@ -13,11 +12,6 @@
 [node name="CanvasLayer" type="CanvasLayer" parent="." groups=["fields"]]
 
 [node name="PartsLibrary" parent="CanvasLayer" instance=ExtResource("2_xf0k2")]
-
-[node name="MonsterPiece" parent="CanvasLayer/PartsLibrary" instance=ExtResource("2_65yt1")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 
 [node name="Field1" parent="CanvasLayer" instance=ExtResource("1_fkhir")]
 anchor_left = 0.239
