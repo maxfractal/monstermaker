@@ -13,6 +13,10 @@
 
 [node name="PartsLibrary" parent="CanvasLayer" instance=ExtResource("2_xf0k2")]
 anchors_preset = 9
+offset_left = 3.0
+offset_top = -1.0
+offset_right = 130.0
+offset_bottom = 2.0
 
 [node name="Field1" parent="CanvasLayer" instance=ExtResource("1_fkhir")]
 anchor_left = 0.239

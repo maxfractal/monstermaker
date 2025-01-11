@@ -109,8 +109,13 @@ func generate_piece(file_path):
 	pieces_holder.add_child(new_part)
 
 	# fill in the textureRect, set the new texture, then add it to the new piece
+	new_part.texture_rect.expand = true
+	new_part.texture_rect.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+	new_part.texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
 	new_part.texture_rect.texture = loadedTexture
-	scale_texture(new_part.texture_rect)
+	var newSize = scale_texture(new_part.texture_rect)
+	new_part.texture_rect.set_size( newSize )
+	print("--------new size (%d" % newSize.x + ",%4d" % newSize.y + ")")
 	return
 	
 #	scale_texture will resize the TextureRect so the image fits in the piece
@@ -125,7 +130,7 @@ func scale_texture(texture_rect):
 		
 		#	figure out which dimension is larger so the thumbnail is as large
 		#	as it can be
-		print("--------old size (%d" % texture_size.x + ",%4d" % texture_size.y + ")")
+		#print("--------old size (%d" % texture_size.x + ",%4d" % texture_size.y + ")")
 		if texture_size.x > texture_size.y:
 			aspect_ratio = texture_size.y / texture_size.x
 			new_width = min(LIBRARY_TILE_WIDTH_MAX, texture_size.x)
@@ -134,13 +139,9 @@ func scale_texture(texture_rect):
 			aspect_ratio = texture_size.x / texture_size.y
 			new_height = min(LIBRARY_TILE_WIDTH_MAX, texture_size.y)
 			new_width = new_height * aspect_ratio
-		print("--------new size (%d" % new_width + ",%4d" % new_height + ")")
-		
-		# set a bunch of TextureRect parameters
-		texture_rect.set_size(Vector2(new_width, new_height))
-		texture_rect.expand = true;
-		texture_rect.expand_mode = TextureRect.EXPAND_FIT_HEIGHT_PROPORTIONAL
-		texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
+		#print("--------new size (%d" % new_width + ",%4d" % new_height + ")")
+		return Vector2(new_width, new_height)
+	return Vector2(1,1)
 
 func return_part_starting_position(part: MonsterPiece):
 	part.reparent(pieces_holder)

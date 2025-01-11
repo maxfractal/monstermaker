@@ -5,13 +5,15 @@
 [ext_resource type="Script" path="res://project/library/library_folder_select_dialog.gd" id="3_wlnhf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06w7q"]
-size = Vector2(206, 619)
+size = Vector2(124, 619)
 
 [node name="Library" type="MarginContainer"]
 anchors_preset = -1
 anchor_bottom = 1.0
-offset_top = -3.0
-offset_right = 210.0
+offset_left = -60.0
+offset_top = 1.0
+offset_right = 67.0
+offset_bottom = 4.0
 grow_vertical = 2
 script = ExtResource("1_3o500")
 
@@ -21,7 +23,7 @@ layout_mode = 2
 [node name="LibraryTitle" type="Label" parent="."]
 layout_mode = 2
 size_flags_vertical = 0
-text = "Parts Library"
+text = "Pieces Library"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -37,20 +39,19 @@ horizontal_scroll_mode = 0
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 150
+theme_override_constants/separation = 104
 
 [node name="LibraryPartDrop" type="Area2D" parent="."]
 position = Vector2(0, 25)
 
 [node name="LibraryDropCollisionShape2D" type="CollisionShape2D" parent="LibraryPartDrop"]
-position = Vector2(104, 312.5)
+position = Vector2(60, 314)
 shape = SubResource("RectangleShape2D_06w7q")
 
 [node name="LoadLibraryButton" type="Button" parent="."]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "Load"
+size_flags_vertical = 8
+text = "Load Set Pieces"
 script = ExtResource("2_c77rh")
 
 [node name="LibraryFolderSelectDialog" type="FileDialog" parent="LoadLibraryButton"]
