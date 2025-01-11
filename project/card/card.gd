@@ -12,7 +12,7 @@ class_name Card extends Control
 var index: int = 0
 
 func _ready():
-	print("card ready start - %s" %name)
+	#print("card ready start - %s" %name)
 	name_label.text = name
 
 func _input(event):

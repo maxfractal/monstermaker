@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://jfgyvklek2dw"]
+[gd_scene load_steps=10 format=3 uid="uid://jfgyvklek2dw"]
 
 [ext_resource type="Script" path="res://project/monsterpiece/monster_piece.gd" id="1_puuqk"]
 [ext_resource type="Script" path="res://project/monsterpiece/state_machine/monsterpiece_state_machine.gd" id="2_a0aeb"]
+[ext_resource type="Texture2D" uid="uid://c5p04scc8becj" path="res://art/Creatures/Skeleton/SkeletonPirate_05_Head4-left.png" id="2_rnuex"]
 [ext_resource type="Script" path="res://project/monsterpiece/state_machine/states/idle_monsterpiece_state.gd" id="3_qxbhg"]
 [ext_resource type="Script" path="res://project/monsterpiece/state_machine/states/clicked_monsterpiece_state.gd" id="4_2c2rx"]
 [ext_resource type="Script" path="res://project/monsterpiece/state_machine/states/drag_monsterpiece_state.gd" id="5_dpdii"]
@@ -9,7 +10,7 @@
 [ext_resource type="Script" path="res://project/monsterpiece/state_machine/states/hover_monsterpiece_state.gd" id="7_ycxiu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dri7j"]
-size = Vector2(166, 176)
+size = Vector2(100, 98)
 
 [node name="MonsterPiece" type="Control"]
 layout_mode = 3
@@ -29,8 +30,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -83.5
 offset_top = -86.0
-offset_right = 83.5
-offset_bottom = 86.0
+offset_right = 16.5
+offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.829317, 0.266134, 0.766609, 1)
@@ -39,17 +40,17 @@ color = Color(0.829317, 0.266134, 0.766609, 1)
 layout_mode = 0
 offset_left = -81.0
 offset_top = -84.0
-offset_right = 86.0
-offset_bottom = -57.0
+offset_right = 17.0
+offset_bottom = -61.0
 text = "Name"
 horizontal_alignment = 1
 
 [node name="MPLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = -79.0
-offset_top = 56.0
-offset_right = 85.0
-offset_bottom = 79.0
+offset_left = -83.0
+offset_top = -9.0
+offset_right = 17.0
+offset_bottom = 14.0
 text = "State"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -59,12 +60,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -78.0
-offset_top = -80.0
-offset_right = 77.0
-offset_bottom = 83.0
+offset_left = -84.0
+offset_top = -85.0
+offset_right = 16.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_rnuex")
 expand_mode = 2
 stretch_mode = 4
 
@@ -90,5 +92,5 @@ script = ExtResource("7_ycxiu")
 position = Vector2(0, 4)
 
 [node name="MPCollisionShape2D" type="CollisionShape2D" parent="MPDetector"]
-position = Vector2(0, -3)
+position = Vector2(-33, -39)
 shape = SubResource("RectangleShape2D_dri7j")

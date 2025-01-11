@@ -12,12 +12,13 @@
 [node name="CanvasLayer" type="CanvasLayer" parent="." groups=["fields"]]
 
 [node name="PartsLibrary" parent="CanvasLayer" instance=ExtResource("2_xf0k2")]
+anchors_preset = 9
 
 [node name="Field1" parent="CanvasLayer" instance=ExtResource("1_fkhir")]
 anchor_left = 0.239
 anchor_right = 0.352
 anchor_bottom = 1.0
-offset_left = -53.328
+offset_left = -41.328
 offset_top = -5.0
 offset_right = 149.496
 offset_bottom = 1.0

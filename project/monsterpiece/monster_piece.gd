@@ -18,8 +18,10 @@ class_name MonsterPiece extends Control
 
 var index: int = 0
 
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 func _ready():
-	print("monsterpiece ready start - %s" %name)
+	#print("monsterpiece ready start - %s" %name)
 	name_label.text = name
 
 func _input(event):
