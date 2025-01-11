@@ -10,3 +10,4 @@ func _on_button_pressed():
 # Connect the button's pressed signal to the function
 func _ready():
 	connect("pressed", Callable(self, "_on_button_pressed"))
+	return

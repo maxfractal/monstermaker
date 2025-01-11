@@ -1,11 +1,18 @@
+#===============================================================================
+# class: MonsterPiece
+#
+#	represents a single image or piece of a monster
+#===============================================================================
 class_name MonsterPiece extends Control
 
-@onready var color_rect: ColorRect = $MPColorRect
-@onready var label: Label = $MPLabel
-@onready var name_label: Label = $MPNameLabel
-@onready var state_machine: MonsterPieceStateMachine = $MonsterPieceStateMachine
-@onready var piece_detector: Area2D = $MPDetector
-
+#-------------------------------------------------------------------------------
+# variables
+#-------------------------------------------------------------------------------
+@onready var color_rect := $MPColorRect
+@onready var label := $MPLabel
+@onready var name_label := $MPNameLabel
+@onready var state_machine := $MonsterPieceStateMachine
+@onready var piece_detector := $MPDetector
 @onready var home_field: MarginContainer
 @onready var texture_rect: TextureRect
 
@@ -13,9 +20,7 @@ var index: int = 0
 
 func _ready():
 	print("monsterpiece ready start - %s" %name)
-	
 	name_label.text = name
-	#return
 	print("monsterpiece ready end - %s" %name)
 
 func _input(event):
