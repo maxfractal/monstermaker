@@ -8,7 +8,7 @@
 size = Vector2(124, 619)
 
 [node name="Library" type="MarginContainer"]
-anchors_preset = -1
+anchors_preset = 9
 anchor_bottom = 1.0
 offset_left = -60.0
 offset_top = 1.0
@@ -23,7 +23,7 @@ layout_mode = 2
 [node name="LibraryTitle" type="Label" parent="."]
 layout_mode = 2
 size_flags_vertical = 0
-text = "Pieces Library"
+text = "Piece  Library"
 horizontal_alignment = 1
 vertical_alignment = 1
 

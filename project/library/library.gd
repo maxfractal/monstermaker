@@ -41,7 +41,7 @@ var new_piece_scene = preload("res://project/monsterpiece/monster_piece.tscn")
 #
 func _ready() -> void:
 	print("Library ready start")
-	$LibraryTitle.text = name
+	#$LibraryTitle.text = name
 
 	# hook up signals so the library can load a set of pieces when a folder
 	# has been picked from the file dialog 	
