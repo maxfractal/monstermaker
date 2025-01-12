@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://project/field/field.gd" id="1_7p7dw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_crh71"]
-size = Vector2(345, 322)
+size = Vector2(173, 258)
 
 [node name="Field" type="MarginContainer"]
 anchors_preset = -1
@@ -11,8 +11,8 @@ anchor_right = 0.24566
 anchor_bottom = 0.66821
 offset_left = -139.0
 offset_top = -203.0
-offset_right = -139.0
-offset_bottom = -203.0
+offset_right = -239.0
+offset_bottom = -138.0
 script = ExtResource("1_7p7dw")
 
 [node name="Panel" type="Panel" parent="."]
@@ -32,12 +32,12 @@ position = Vector2(210, 0)
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CardDropAreaRight"]
-position = Vector2(-68, 347)
+position = Vector2(-120, 377)
 shape = SubResource("RectangleShape2D_crh71")
 
 [node name="CardDropAreaLeft" type="Area2D" parent="."]
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CardDropAreaLeft"]
-position = Vector2(141.5, 117)
+position = Vector2(90, 129)
 shape = SubResource("RectangleShape2D_crh71")

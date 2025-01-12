@@ -1,3 +1,5 @@
+#@icon("ref://project/icons/shambling-mound.svg")
+#@icon("project/icons/B_DOBUTSUEN.png")
 class_name Field extends MarginContainer
 
 @onready var card_drop_area_right: Area2D = $CardDropAreaRight

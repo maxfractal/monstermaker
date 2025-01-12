@@ -1,8 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://ciqgnvw1xg7rc"]
+[gd_scene load_steps=6 format=3 uid="uid://ciqgnvw1xg7rc"]
 
 [ext_resource type="Script" path="res://project/library/library.gd" id="1_3o500"]
 [ext_resource type="Script" path="res://project/library/load_library_button.gd" id="2_c77rh"]
 [ext_resource type="Script" path="res://project/library/library_folder_select_dialog.gd" id="3_wlnhf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rti6s"]
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0.360784, 0.760784, 0.698039, 0.980392)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06w7q"]
 size = Vector2(124, 619)
@@ -24,6 +30,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 0
 text = "Piece  Library"
+label_settings = SubResource("LabelSettings_rti6s")
 horizontal_alignment = 1
 vertical_alignment = 1
 

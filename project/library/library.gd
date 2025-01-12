@@ -7,6 +7,10 @@
 # - handle loading of another set of pieces, like unloading current set
 # - handle drag-n-drop: taking out a piece and putting one back
 #===============================================================================
+#@icon("ref://project/icons/H_SUMO.svg")
+#@icon("ref://project/icons/H_SAMURAI.svg")
+#@icon("ref://project/icons/shambling-mound.svg")
+#@icon("ref://project/icons/B_DOBUTSUEN.png")
 class_name Library extends MarginContainer
 #extends Field
 

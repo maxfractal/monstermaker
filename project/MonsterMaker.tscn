@@ -9,32 +9,57 @@
 
 [node name="Game" type="Node"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." groups=["fields"]]
-
-[node name="PartsLibrary" parent="CanvasLayer" instance=ExtResource("2_xf0k2")]
-offset_left = 3.0
-offset_top = -1.0
-offset_right = 130.0
-offset_bottom = 2.0
-
-[node name="Field1" parent="CanvasLayer" instance=ExtResource("1_fkhir")]
-anchor_left = 0.239
-anchor_right = 0.352
+[node name="Library Section" type="Control" parent="."]
+layout_mode = 3
+anchor_right = 0.11
 anchor_bottom = 1.0
-offset_left = -41.328
-offset_top = -5.0
-offset_right = 149.496
-offset_bottom = 1.0
 grow_vertical = 2
 
-[node name="CardsHolder" parent="CanvasLayer/Field1" index="2"]
+[node name="PartsLibrary" parent="Library Section" instance=ExtResource("2_xf0k2")]
+layout_mode = 2
+anchors_preset = 0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 127.0
+offset_bottom = 645.0
+
+[node name="Monster Section" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.11
+anchor_right = 0.6
+anchor_bottom = 1.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MonsterPanel" type="PanelContainer" parent="Monster Section"]
+layout_mode = 2
+offset_left = -126.72
+offset_top = 251.2
+offset_right = -126.72
+offset_bottom = 797.6
+size_flags_horizontal = 2
+
+[node name="Field1" parent="Monster Section" instance=ExtResource("1_fkhir")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 139.0
+offset_top = 0.0
+offset_right = 939.0
+offset_bottom = 648.0
+grow_vertical = 2
+
+[node name="CardsHolder" parent="Monster Section/Field1" index="2"]
+size_flags_horizontal = 0
 alignment = 0
 
-[node name="Card2" parent="CanvasLayer/Field1/CardsHolder" index="0" instance=ExtResource("4_bv8hq")]
+[node name="Card2" parent="Monster Section/Field1/CardsHolder" index="0" instance=ExtResource("4_bv8hq")]
 layout_mode = 2
 size_flags_vertical = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Field1/CardsHolder/Card2"]
+[node name="TextureRect" type="TextureRect" parent="Monster Section/Field1/CardsHolder/Card2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -51,11 +76,11 @@ texture = ExtResource("5_et247")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="Card3" parent="CanvasLayer/Field1/CardsHolder" index="1" instance=ExtResource("4_bv8hq")]
+[node name="Card3" parent="Monster Section/Field1/CardsHolder" index="1" instance=ExtResource("4_bv8hq")]
 layout_mode = 2
 size_flags_vertical = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Field1/CardsHolder/Card3"]
+[node name="TextureRect" type="TextureRect" parent="Monster Section/Field1/CardsHolder/Card3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -72,11 +97,11 @@ texture = ExtResource("6_42jks")
 expand_mode = 5
 stretch_mode = 4
 
-[node name="Card4" parent="CanvasLayer/Field1/CardsHolder" index="2" instance=ExtResource("4_bv8hq")]
+[node name="Card4" parent="Monster Section/Field1/CardsHolder" index="2" instance=ExtResource("4_bv8hq")]
 layout_mode = 2
 size_flags_vertical = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Field1/CardsHolder/Card4"]
+[node name="TextureRect" type="TextureRect" parent="Monster Section/Field1/CardsHolder/Card4"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -93,25 +118,48 @@ texture = ExtResource("7_5nghx")
 expand_mode = 5
 stretch_mode = 4
 
-[node name="CollisionShape2D" parent="CanvasLayer/Field1/CardDropAreaRight" index="0"]
+[node name="CollisionShape2D" parent="Monster Section/Field1/CardDropAreaRight" index="0"]
 position = Vector2(-24.328, 497)
 
-[node name="CardDropAreaLeft" parent="CanvasLayer/Field1" index="4"]
+[node name="CardDropAreaLeft" parent="Monster Section/Field1" index="4"]
 position = Vector2(76.672, 7)
 
-[node name="CollisionShape2D" parent="CanvasLayer/Field1/CardDropAreaLeft" index="0"]
+[node name="CollisionShape2D" parent="Monster Section/Field1/CardDropAreaLeft" index="0"]
 position = Vector2(109.5, 161)
 
-[node name="Field2" parent="CanvasLayer" instance=ExtResource("1_fkhir")]
-anchor_left = 0.643229
-anchor_top = 0.54784
-anchor_right = 0.65191
-anchor_bottom = 0.969
-offset_left = -160.0
-offset_top = -267.0
-offset_right = 166.0
-offset_bottom = 0.0879517
-grow_horizontal = 2
-grow_vertical = 0
+[node name="Pieces Used Section" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.6
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.200012
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[editable path="CanvasLayer/Field1"]
+[node name="PiecesUsedContainer" type="PanelContainer" parent="Pieces Used Section"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+offset_left = 337.0
+offset_top = 2.0
+offset_right = 457.0
+offset_bottom = 641.0
+size_flags_horizontal = 10
+
+[node name="PiecesUsedTitle" type="Label" parent="Pieces Used Section/PiecesUsedContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Pieces Used"
+
+[node name="Field2" parent="Pieces Used Section" instance=ExtResource("1_fkhir")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[editable path="Monster Section/Field1"]
