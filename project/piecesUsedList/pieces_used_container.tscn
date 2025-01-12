@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://bx5wjov5ipxn3"]
+
+[ext_resource type="Script" path="res://project/piecesUsedList/pieces_used_container.gd" id="1_5b4a0"]
+
+[node name="PiecesUsedContainer" type="MarginContainer"]
+custom_minimum_size = Vector2(60, 0)
+offset_right = 60.0
+offset_bottom = 639.0
+size_flags_horizontal = 10
+script = ExtResource("1_5b4a0")
+
+[node name="PiecesUsedTitle" type="Label" parent="."]
+z_index = 2
+layout_mode = 2
+size_flags_vertical = 0
+text = "Used"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.412236, 0.511497, 0.627156, 1)
+
+[node name="PiecesMarginContainer" type="MarginContainer" parent="."]
+z_index = 1
+layout_mode = 2
+
+[node name="PiecesScrollContainer" type="ScrollContainer" parent="PiecesMarginContainer"]
+layout_mode = 2
+
+[node name="PiecesUsedList" type="VBoxContainer" parent="PiecesMarginContainer/PiecesScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

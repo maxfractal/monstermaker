@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://buh3412b0qtpp"]
+[gd_scene load_steps=8 format=3 uid="uid://buh3412b0qtpp"]
 
 [ext_resource type="PackedScene" uid="uid://biim2lxri0akl" path="res://project/field/field.tscn" id="1_fkhir"]
 [ext_resource type="PackedScene" uid="uid://ciqgnvw1xg7rc" path="res://project/library/library.tscn" id="2_xf0k2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dfo74gw5mmbu" path="res://art/Creatures/Skeleton/SkeletonPirate_04_Head-3-right.png" id="5_et247"]
 [ext_resource type="Texture2D" uid="uid://d4aa1sr52cbhg" path="res://art/Creatures/Skeleton/SkeletonPirate_01_upper-Torso-large.png" id="6_42jks"]
 [ext_resource type="Texture2D" uid="uid://cghl6hgwssuvw" path="res://art/Creatures/Skeleton/SkeletonPirate_04_Pelvis-Large.png" id="7_5nghx"]
+[ext_resource type="PackedScene" uid="uid://bx5wjov5ipxn3" path="res://project/piecesUsedList/pieces_used_container.tscn" id="7_f31lo"]
 
 [node name="Game" type="Node"]
 
@@ -29,7 +30,8 @@ layout_mode = 3
 anchor_left = 0.11
 anchor_right = 0.6
 anchor_bottom = 1.0
-offset_right = 40.0
+offset_left = 0.279999
+offset_right = -96.2
 offset_bottom = 40.0
 
 [node name="MonsterPanel" type="PanelContainer" parent="Monster Section"]
@@ -47,9 +49,8 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 139.0
 offset_top = 0.0
-offset_right = 939.0
+offset_right = 416.0
 offset_bottom = 648.0
-grow_vertical = 2
 
 [node name="CardsHolder" parent="Monster Section/Field1" index="2"]
 size_flags_horizontal = 0
@@ -130,25 +131,25 @@ position = Vector2(109.5, 161)
 [node name="Pieces Used Section" type="Control" parent="."]
 layout_mode = 3
 anchor_left = 0.6
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -0.200012
+anchor_right = 0.691
+anchor_bottom = 0.963
+offset_left = -137.2
+offset_right = -0.0320435
+offset_bottom = 23.976
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="PiecesUsedContainer" type="PanelContainer" parent="Pieces Used Section"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-offset_left = 337.0
-offset_top = 2.0
-offset_right = 457.0
-offset_bottom = 641.0
-size_flags_horizontal = 10
-
-[node name="PiecesUsedTitle" type="Label" parent="Pieces Used Section/PiecesUsedContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-text = "Pieces Used"
+[node name="PiecesUsedContainer" parent="Pieces Used Section" instance=ExtResource("7_f31lo")]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -39.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 2
 
 [node name="Field2" parent="Pieces Used Section" instance=ExtResource("1_fkhir")]
 layout_mode = 1

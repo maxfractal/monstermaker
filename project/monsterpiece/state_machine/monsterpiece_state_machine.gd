@@ -8,8 +8,10 @@ var states: Dictionary = {}
 
 
 func _ready():
+	#print("\t\t\t\t\tMP state machine for %s" % get_parent().name)
 	for child in get_children():
 		if child is MonsterPieceState:
+			#print("\t\t\t\t\t\tstate %s" % child.name.to_lower())
 			states[child.name.to_lower()] = child
 			child.transitioned.connect(on_child_transition)
 			
@@ -17,7 +19,6 @@ func _ready():
 				for sub_child in child.get_children():
 					states[child.name.to_lower() + '/' + sub_child.name.to_lower()] = sub_child
 					sub_child.transitioned.connect(on_child_transition)
-
 	#print(states)
 	
 	if initial_state:

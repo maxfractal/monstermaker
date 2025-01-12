@@ -7,10 +7,10 @@
 # - handle loading of another set of pieces, like unloading current set
 # - handle drag-n-drop: taking out a piece and putting one back
 #===============================================================================
-#@icon("ref://project/icons/H_SUMO.svg")
-#@icon("ref://project/icons/H_SAMURAI.svg")
-#@icon("ref://project/icons/shambling-mound.svg")
-#@icon("ref://project/icons/B_DOBUTSUEN.png")
+#@icon("ref://icons/H_SUMO.svg")
+#@icon("ref:///icons/H_SAMURAI.svg")
+#@icon("ref:///icons/shambling-mound.svg")
+#@icon("ref:///icons/B_DOBUTSUEN.png")
 class_name Library extends MarginContainer
 #extends Field
 
@@ -40,11 +40,10 @@ var folder_path = "res://art/Creatures/Skeleton/"  # Replace with your folder pa
 # load the monster piece scene ONCE so it can be instantiated when loading the library
 var new_piece_scene = preload("res://project/monsterpiece/monster_piece.tscn")
 
-
 # Called when the node enters the scene tree for the first time.
 #
 func _ready() -> void:
-	print("Library ready start")
+	print("Library ready")
 	#$LibraryTitle.text = name
 
 	# hook up signals so the library can load a set of pieces when a folder
@@ -61,21 +60,21 @@ func _process(delta: float) -> void:
 # main function to load a folder of pieces into the library.
 #
 func load_Library():
-	#print("--Start loading library")
-	print("---Library folder path:", folder_path)
+	print("Start loading library")
+	print("\tLibrary folder path:", folder_path)
 	
 	#	open the folder and traverse the files, loading all of the images
 	#
 	var dir = DirAccess.open(folder_path)
 	dir.list_dir_begin()
-	print("---Directory: (%s)" % folder_path)
+	print("\t\tDirectory: (%s)" % folder_path)
 	if dir:
-		print("----directory found.")
+		print("\t\t directory found.")
 		var file_name = dir.get_next()
 		while file_name != "":
 			if !dir.current_is_dir() and file_name.ends_with(".png"):
 				var file_path = folder_path + file_name
-				print("-----reading %s" % file_path)
+				print("\t\t\treading %s" % file_path)
 				
 				# load the image, instantiate a piece and attach the image to it
 				generate_piece(file_path)
@@ -87,13 +86,13 @@ func load_Library():
 
 	# DEBUG
 	#   see what children the vbox has
-	#print("\n<-- library piece list -->")
+	#print("\n\t<-- library piece list -->")
 	#var i = 0
 	#for child in pieces_holder.get_children():
 		#i=i+1
-		#print(" piece %d" %i, " = %s" %child.name)
-	#print("<-- END of library piece list -->\n")
-	#print("--End loading library")
+		#print("\t piece %d" %i, " = %s" %child.name)
+	#print("\t<-- END of library piece list -->\n")
+	print("End loading library")
 	return
 	
 #	generate_piece will
@@ -108,26 +107,34 @@ func generate_piece(file_path):
 		print("ERROR: Failed to load texture from path:", file_path)
 		return false
 
-	# create a new MonsterPiece and add it to the container
+	# create a new MonsterPiece, configure it then add it to the container
 	var new_part : MonsterPiece = new_piece_scene.instantiate()
+	
+	# NOTE: MUST add piece to the hierarchy FIRST so it instantiates all of the children nodes
+	# of MonsterPiece!
+	#
 	pieces_holder.add_child(new_part)
+	print("\t\t\t\tpiece added %s" %new_part.name + " - container size = %d" % pieces_holder.get_child_count())
 
 	# fill in the textureRect, set the new texture, then add it to the new piece
-	new_part.texture_rect.expand = true
-	new_part.texture_rect.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
-	new_part.texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
-	new_part.texture_rect.texture = loadedTexture
-	var newSize = scale_texture(new_part.texture_rect)
-	new_part.texture_rect.set_size( newSize )
-	print("--------new size (%d" % newSize.x + ",%4d" % newSize.y + ")")
+	new_part.piece_texture_rect.texture = loadedTexture
+	new_part.icon_texture_rect.texture = loadedTexture
+	#new_part.piece_texture_rect.expand = true
+	#new_part.piece_texture_rect.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+	#new_part.piece_texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
+	#var newSize = scale_texture(new_part.piece_texture_rect)
+	#new_part.piece_texture_rect.set_size( newSize )
+	#new_part.piece_texture_rect.set_position( Vector2(0,1) )
+	
+	#print("\t\t\t\t new size (%d" % newSize.x + ",%4d" % newSize.y + ")")
 	return
 	
 #	scale_texture will resize the TextureRect so the image fits in the piece
 #	container while maintaining it's aspect ratio
 #
-func scale_texture(texture_rect):
-	if texture_rect.texture:
-		var texture_size = texture_rect.texture.get_size()
+func scale_texture(piece_texture_rect):
+	if piece_texture_rect.texture:
+		var texture_size = piece_texture_rect.texture.get_size()
 		var aspect_ratio
 		var new_width
 		var new_height
