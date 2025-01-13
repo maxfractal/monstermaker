@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://ch8lasar312hd"]
+[gd_scene load_steps=4 format=3 uid="uid://ch8lasar312hd"]
 
+[ext_resource type="Script" path="res://loading_screen.gd" id="1_mxc3t"]
 [ext_resource type="Texture2D" uid="uid://c07h67u5wyot3" path="res://assets/background.png" id="1_yakyi"]
 [ext_resource type="Texture2D" uid="uid://55wnhne84m4h" path="res://icon.svg" id="2_jgbcg"]
 
 [node name="loadingScreen" type="Node2D"]
+script = ExtResource("1_mxc3t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4954, 2222)
