@@ -79,23 +79,29 @@ expand_mode = 3
 stretch_mode = 4
 flip_v = true
 
-[node name="MonsterPieceStateMachine" type="Node" parent="."]
+[node name="MonsterPieceStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_a0aeb")
+initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="MonsterPieceStateMachine"]
+[node name="Idle" type="Node" parent="MonsterPieceStateMachine" node_paths=PackedStringArray("monsterpiece")]
 script = ExtResource("3_qxbhg")
+monsterpiece = NodePath("../..")
 
-[node name="Click" type="Node" parent="MonsterPieceStateMachine"]
+[node name="Click" type="Node" parent="MonsterPieceStateMachine" node_paths=PackedStringArray("monsterpiece")]
 script = ExtResource("4_2c2rx")
+monsterpiece = NodePath("../..")
 
-[node name="Drag" type="Node" parent="MonsterPieceStateMachine"]
+[node name="Drag" type="Node" parent="MonsterPieceStateMachine" node_paths=PackedStringArray("monsterpiece")]
 script = ExtResource("5_dpdii")
+monsterpiece = NodePath("../..")
 
-[node name="Release" type="Node" parent="MonsterPieceStateMachine"]
+[node name="Release" type="Node" parent="MonsterPieceStateMachine" node_paths=PackedStringArray("monsterpiece")]
 script = ExtResource("6_bkm8r")
+monsterpiece = NodePath("../..")
 
-[node name="Hover" type="Node" parent="MonsterPieceStateMachine"]
+[node name="Hover" type="Node" parent="MonsterPieceStateMachine" node_paths=PackedStringArray("monsterpiece")]
 script = ExtResource("7_ycxiu")
+monsterpiece = NodePath("../..")
 
 [node name="MPDetector" type="Area2D" parent="."]
 

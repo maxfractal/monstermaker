@@ -109,12 +109,13 @@ func generate_piece(file_path):
 
 	# create a new MonsterPiece, configure it then add it to the container
 	var new_part : MonsterPiece = new_piece_scene.instantiate()
-	
+	new_part.state_machine = MonsterPieceStateMachine.new()
 	# NOTE: MUST add piece to the hierarchy FIRST so it instantiates all of the children nodes
 	# of MonsterPiece!
 	#
+	#print("\t\t\t\tpiece %s" %new_part.state_machine)
 	pieces_holder.add_child(new_part)
-	print("\t\t\t\tpiece added %s" %new_part.name + " - container size = %d" % pieces_holder.get_child_count())
+	#print("\t\t\t\tpiece added %s" %new_part.name + " - container size = %d" % pieces_holder.get_child_count())
 
 	# fill in the textureRect, set the new texture, then add it to the new piece
 	new_part.piece_texture_rect.texture = loadedTexture

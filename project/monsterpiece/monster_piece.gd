@@ -24,7 +24,11 @@ var index: int = 0
 func _ready():
 	#print("monsterpiece ready start - %s" %name)
 	name_label.text = " "
-
+	#print("monsterpiece _ready----------------")
+	#print ("\t states= %s" % state_machine.states)
+	#print("monsterpiece ----------------------")
+	return
+	
 func _input(event):
 	state_machine.on_input(event)
 
