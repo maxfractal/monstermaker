@@ -36,10 +36,10 @@ offset_bottom = 40.0
 
 [node name="MonsterPanel" type="PanelContainer" parent="Monster Section"]
 layout_mode = 2
-offset_left = -126.72
-offset_top = 251.2
-offset_right = -126.72
-offset_bottom = 797.6
+offset_left = 13.0
+offset_top = 2.0
+offset_right = 130.0
+offset_bottom = 646.0
 size_flags_horizontal = 2
 
 [node name="Field1" parent="Monster Section" instance=ExtResource("1_fkhir")]
