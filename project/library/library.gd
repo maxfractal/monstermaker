@@ -110,6 +110,7 @@ func generate_piece(file_path):
 	# create a new MonsterPiece, configure it then add it to the container
 	var new_part : MonsterPiece = new_piece_scene.instantiate()
 	new_part.state_machine = MonsterPieceStateMachine.new()
+	
 	# NOTE: MUST add piece to the hierarchy FIRST so it instantiates all of the children nodes
 	# of MonsterPiece!
 	#
