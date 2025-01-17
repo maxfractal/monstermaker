@@ -1,9 +1,23 @@
+#===============================================================================
+# class: Library
+#
+#	all of the (unused) pieces available for a monster
+#
+# TODO
+# - handle loading of another set of pieces, like unloading current set
+# - handle drag-n-drop: taking out a piece and putting one back
+#===============================================================================
 class_name MonsterPieceState
 extends Node
 
+#-------------------------------------------------------------------------------
+# signal
+#-------------------------------------------------------------------------------
 signal transitioned
 
-
+#-------------------------------------------------------------------------------
+# variables
+#-------------------------------------------------------------------------------
 @export var monsterpiece: MonsterPiece
 
 

@@ -121,6 +121,23 @@ func generate_piece(file_path):
 	# fill in the textureRect, set the new texture, then add it to the new piece
 	new_part.piece_texture_rect.texture = loadedTexture
 	new_part.icon_texture_rect.texture = loadedTexture
+	
+	# set up the collision shape
+	var rect = CollisionShape2D.new()
+	new_part.piece_detector.add_child(rect)
+	
+	var the_shape = RectangleShape2D.new()
+	the_shape.extents = Vector2(50, 50)
+	#rect.disabled = false
+	rect.shape = the_shape
+	new_part.collision_shape = rect
+	#new_part.piece_detector.set_pickable(true)
+	print("new piece created: detector %s" %new_part.piece_detector)
+	print("new piece created: collider %s" %new_part.collision_shape)
+	#print("                            %s" %new_part.piece_detector.position)
+	
+	#piece_detector := $MPDetector
+	#collision_shape:= $MPCollisionShape2D
 	#new_part.piece_texture_rect.expand = true
 	#new_part.piece_texture_rect.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
 	#new_part.piece_texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
@@ -167,6 +184,7 @@ func set_new_part(part: MonsterPiece):
 
 
 func part_reposition(part: MonsterPiece):
+	print("PART REPOSITION!")
 	#var field_areas = part.drop_point_detector.get_overlapping_areas()
 	#var parts_areas = part.part_detector.get_overlapping_areas()
 	#var index: int = 0

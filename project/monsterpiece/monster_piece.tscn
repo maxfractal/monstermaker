@@ -106,5 +106,5 @@ monsterpiece = NodePath("../..")
 [node name="MPDetector" type="Area2D" parent="."]
 
 [node name="MPCollisionShape2D" type="CollisionShape2D" parent="MPDetector"]
-position = Vector2(51, 49)
+position = Vector2(50, 50)
 shape = SubResource("RectangleShape2D_dri7j")

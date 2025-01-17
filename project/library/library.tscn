@@ -25,6 +25,7 @@ script = ExtResource("1_3o500")
 
 [node name="LibraryPanel" type="Panel" parent="."]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="LibraryTitle" type="Label" parent="."]
 layout_mode = 2
