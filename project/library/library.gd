@@ -86,12 +86,13 @@ func load_Library():
 
 	# DEBUG
 	#   see what children the vbox has
-	#print("\n\t<-- library piece list -->")
-	#var i = 0
-	#for child in pieces_holder.get_children():
-		#i=i+1
-		#print("\t piece %d" %i, " = %s" %child.name)
-	#print("\t<-- END of library piece list -->\n")
+	print("\n\t<-- library piece list -->")
+	var i = 0
+	for child in pieces_holder.get_children():
+		i=i+1
+		#print("\t piece %d" %i, " = %s" %child.name + "  \tpos=%s" % str(child.get_screen_position()))
+		print("\t piece %d" %i, " = %s" %child.name + "  \tpos=%s" % str(child.position))
+	print("\t<-- END of library piece list -->\n")
 	print("End loading library")
 	return
 	
@@ -127,13 +128,20 @@ func generate_piece(file_path):
 	new_part.piece_detector.add_child(rect)
 	
 	var the_shape = RectangleShape2D.new()
-	the_shape.extents = Vector2(50, 50)
-	#rect.disabled = false
+	the_shape.extents = Vector2(51, 51)
+	the_shape.set_size(Vector2(50,50))
+	#the_shape.size = Vector2(50, 50)
 	rect.shape = the_shape
+	rect.position = Vector2(0,0)
 	new_part.collision_shape = rect
+	
+	print("\t\t\t\t\tpiece " + str(new_part.get_screen_position()))
+	print("\t\t\t\t\trect " + str(new_part.get_rect()))
+	print("\t\t\t\t\tglobal rect " + str(new_part.get_global_rect()))
+	#rect.disabled = false
 	#new_part.piece_detector.set_pickable(true)
-	print("new piece created: detector %s" %new_part.piece_detector)
-	print("new piece created: collider %s" %new_part.collision_shape)
+	#print("new piece created: detector %s" %new_part.piece_detector)
+	#print("new piece created: collider %s" %new_part.collision_shape)
 	#print("                            %s" %new_part.piece_detector.position)
 	
 	#piece_detector := $MPDetector

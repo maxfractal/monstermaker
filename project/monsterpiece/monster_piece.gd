@@ -38,7 +38,8 @@ func _input(event):
 		if event.pressed:
 			count += 1
 			print("Click:" + str(count))
-
+	return
+	
 func _on_gui_input(event):
 	state_machine.on_gui_input(event)
 
