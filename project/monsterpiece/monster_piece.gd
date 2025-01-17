@@ -13,7 +13,7 @@ class_name MonsterPiece extends Control
 @onready var name_label := $MPNameLabel
 @onready var state_machine := $MonsterPieceStateMachine
 @onready var piece_detector := $MPDetector
-@onready var collision_shape:= $MPCollisionShape2D
+@onready var collision_shape:= $MPDetector/MPCollisionShape2D
 @onready var piece_texture_rect := $MPTextureRect
 @onready var icon_texture_rect := $MPTextureRect
 @onready var home_field: MarginContainer

@@ -119,6 +119,10 @@ func generate_piece(file_path):
 	pieces_holder.add_child(new_part)
 	#print("\t\t\t\tpiece added %s" %new_part.name + " - container size = %d" % pieces_holder.get_child_count())
 
+	#  set the size + position after adding to parent
+	new_part.position = Vector2(0,0)
+	new_part.size = Vector2(50,50)
+	
 	# fill in the textureRect, set the new texture, then add it to the new piece
 	new_part.piece_texture_rect.texture = loadedTexture
 	new_part.icon_texture_rect.texture = loadedTexture
@@ -128,16 +132,21 @@ func generate_piece(file_path):
 	new_part.piece_detector.add_child(rect)
 	
 	var the_shape = RectangleShape2D.new()
-	the_shape.extents = Vector2(51, 51)
-	the_shape.set_size(Vector2(50,50))
-	#the_shape.size = Vector2(50, 50)
 	rect.shape = the_shape
 	rect.position = Vector2(0,0)
 	new_part.collision_shape = rect
 	
-	print("\t\t\t\t\tpiece " + str(new_part.get_screen_position()))
-	print("\t\t\t\t\trect " + str(new_part.get_rect()))
-	print("\t\t\t\t\tglobal rect " + str(new_part.get_global_rect()))
+	#the_shape.extents = Vector2(51, 51)
+	the_shape.set_size(Vector2(50,50))
+	#the_shape.size = Vector2(50, 50)
+
+	print("\t\t\t\t\tpiece spos " + str(new_part.get_screen_position()))
+	print("\t\t\t\t\tpiece rect " + str(new_part.get_rect()))
+	print("\t\t\t\t\tpiece globl" + str(new_part.get_global_rect()))
+	print("\t\t\t\t\tdtector pos" + str(new_part.piece_detector.position))
+	print("\t\t\t\t\trect   pos  " + str(rect.position))
+	print("\t\t\t\t\tshape size " + str(the_shape.size))
+	print("\t\t\t\t\tshape extnt" + str(the_shape.extents))
 	#rect.disabled = false
 	#new_part.piece_detector.set_pickable(true)
 	#print("new piece created: detector %s" %new_part.piece_detector)
