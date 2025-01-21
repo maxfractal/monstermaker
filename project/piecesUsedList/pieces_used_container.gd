@@ -7,7 +7,7 @@
 # - 
 # - 
 #===============================================================================
-@icon("ref:///icons/B_DOBUTSUEN.png")
+#@icon("ref:///icons/B_DOBUTSUEN.png")
 class_name PiecesUsedContainer extends MarginContainer
 
 #-------------------------------------------------------------------------------

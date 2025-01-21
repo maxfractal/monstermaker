@@ -3,7 +3,7 @@ extends CardState
 
 func _enter():
 	card.color_rect.color = Color.WEB_GREEN
-	card.label.text = "Idle"
+	card.label.text = "idle"
 	card.pivot_offset = Vector2.ZERO
 
 

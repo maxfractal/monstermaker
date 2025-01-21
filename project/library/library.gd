@@ -86,12 +86,13 @@ func load_Library():
 
 	# DEBUG
 	#   see what children the vbox has
-	#print("\n\t<-- library piece list -->")
-	#var i = 0
-	#for child in pieces_holder.get_children():
-		#i=i+1
-		#print("\t piece %d" %i, " = %s" %child.name)
-	#print("\t<-- END of library piece list -->\n")
+	print("\n\t<-- library piece list -->")
+	var i = 0
+	for child in pieces_holder.get_children():
+		i=i+1
+		#print("\t piece %d" %i, " = %s" %child.name + "  \tpos=%s" % str(child.get_screen_position()))
+		print("\t piece %d" %i, " = %s" %child.name + "  \tpos=%s" % str(child.position))
+	print("\t<-- END of library piece list -->\n")
 	print("End loading library")
 	return
 	
@@ -109,16 +110,51 @@ func generate_piece(file_path):
 
 	# create a new MonsterPiece, configure it then add it to the container
 	var new_part : MonsterPiece = new_piece_scene.instantiate()
+	new_part.state_machine = MonsterPieceStateMachine.new()
 	
 	# NOTE: MUST add piece to the hierarchy FIRST so it instantiates all of the children nodes
 	# of MonsterPiece!
 	#
+	#print("\t\t\t\tpiece %s" %new_part.state_machine)
 	pieces_holder.add_child(new_part)
-	print("\t\t\t\tpiece added %s" %new_part.name + " - container size = %d" % pieces_holder.get_child_count())
+	#print("\t\t\t\tpiece added %s" %new_part.name + " - container size = %d" % pieces_holder.get_child_count())
 
+	#  set the size + position after adding to parent
+	new_part.position = Vector2(0,0)
+	new_part.size = Vector2(50,50)
+	
 	# fill in the textureRect, set the new texture, then add it to the new piece
 	new_part.piece_texture_rect.texture = loadedTexture
 	new_part.icon_texture_rect.texture = loadedTexture
+	
+	# set up the collision shape
+	var rect = CollisionShape2D.new()
+	new_part.piece_detector.add_child(rect)
+	
+	var the_shape = RectangleShape2D.new()
+	rect.shape = the_shape
+	rect.position = Vector2(0,0)
+	new_part.collision_shape = rect
+	
+	#the_shape.extents = Vector2(51, 51)
+	the_shape.set_size(Vector2(50,50))
+	#the_shape.size = Vector2(50, 50)
+
+	print("\t\t\t\t\tpiece spos " + str(new_part.get_screen_position()))
+	print("\t\t\t\t\tpiece rect " + str(new_part.get_rect()))
+	print("\t\t\t\t\tpiece globl" + str(new_part.get_global_rect()))
+	print("\t\t\t\t\tdtector pos" + str(new_part.piece_detector.position))
+	print("\t\t\t\t\trect   pos  " + str(rect.position))
+	print("\t\t\t\t\tshape size " + str(the_shape.size))
+	print("\t\t\t\t\tshape extnt" + str(the_shape.extents))
+	#rect.disabled = false
+	#new_part.piece_detector.set_pickable(true)
+	#print("new piece created: detector %s" %new_part.piece_detector)
+	#print("new piece created: collider %s" %new_part.collision_shape)
+	#print("                            %s" %new_part.piece_detector.position)
+	
+	#piece_detector := $MPDetector
+	#collision_shape:= $MPCollisionShape2D
 	#new_part.piece_texture_rect.expand = true
 	#new_part.piece_texture_rect.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
 	#new_part.piece_texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
@@ -165,6 +201,7 @@ func set_new_part(part: MonsterPiece):
 
 
 func part_reposition(part: MonsterPiece):
+	print("PART REPOSITION!")
 	#var field_areas = part.drop_point_detector.get_overlapping_areas()
 	#var parts_areas = part.part_detector.get_overlapping_areas()
 	#var index: int = 0
