@@ -63,6 +63,12 @@ func load_Library():
 	print("Start loading library")
 	print("\tLibrary folder path:", folder_path)
 	
+	
+	print("library   z-index: %s" % str(self.z_index))
+	print("lib hldr  z-index: %s" % str(self.pieces_holder.z_index))
+	print("drop area z-index: %s" % str(get_node("/root/Game/Monster Section").z_index))
+	#print("libr area: %s" % str(piece_drop.z_index))
+	
 	#	open the folder and traverse the files, loading all of the images
 	#
 	var dir = DirAccess.open(folder_path)
@@ -91,7 +97,7 @@ func load_Library():
 	for child in pieces_holder.get_children():
 		i=i+1
 		#print("\t piece %d" %i, " = %s" %child.name + "  \tpos=%s" % str(child.get_screen_position()))
-		print("\t piece %d" %i, " = %s" %child.name + "  \tpos=%s" % str(child.position))
+		#print("\t piece %d" %i, " = %s" %child.name + "  \tZ=%s" % str(child.z_index) + " \tZ relative=%s" % str(child.z_relative))
 	print("\t<-- END of library piece list -->\n")
 	print("End loading library")
 	return
@@ -122,11 +128,21 @@ func generate_piece(file_path):
 	#  set the size + position after adding to parent
 	new_part.position = Vector2(0,0)
 	new_part.size = Vector2(50,50)
+	new_part.home_field = self			# set the "parent" of drop to this library
 	
 	# fill in the textureRect, set the new texture, then add it to the new piece
-	new_part.piece_texture_rect.texture = loadedTexture
 	new_part.icon_texture_rect.texture = loadedTexture
-	
+	#new_part.icon_texture_rect.visible = false
+	#new_part.icon_texture_rect.visible = not new_part.icon_texture_rect.visible
+	new_part.piece_texture_rect.texture = loadedTexture
+	new_part.piece_texture_rect.set_position(Vector2(0,0))
+
+	# set part + texture variables	
+	#new_part.y_sort_enabled = true
+	#new_part.z_index = 10
+	#new_part.piece_texture_rect.z_index = 20
+	#new_part.icon_texture_rect.texture.y_sort_enabled = true
+
 	# set up the collision shape
 	var rect = CollisionShape2D.new()
 	new_part.piece_detector.add_child(rect)
@@ -140,13 +156,17 @@ func generate_piece(file_path):
 	the_shape.set_size(Vector2(50,50))
 	#the_shape.size = Vector2(50, 50)
 
+	print("\t\t\t\t\tpiece z    " + str(new_part.z_index))
 	print("\t\t\t\t\tpiece spos " + str(new_part.get_screen_position()))
 	print("\t\t\t\t\tpiece rect " + str(new_part.get_rect()))
 	print("\t\t\t\t\tpiece globl" + str(new_part.get_global_rect()))
-	print("\t\t\t\t\tdtector pos" + str(new_part.piece_detector.position))
-	print("\t\t\t\t\trect   pos  " + str(rect.position))
-	print("\t\t\t\t\tshape size " + str(the_shape.size))
-	print("\t\t\t\t\tshape extnt" + str(the_shape.extents))
+	print("\t\t\t\t\ttexture pos" + str(new_part.piece_texture_rect.get_position()))
+	print("\t\t\t\t\ttexture siz" + str(new_part.piece_texture_rect.get_size()))
+	print("\t\t\t\t\ttexture off" + str(new_part.piece_texture_rect.get_pivot_offset()))
+	#print("\t\t\t\t\tdtector pos" + str(new_part.piece_detector.position))
+	#print("\t\t\t\t\trect   pos " + str(rect.position))
+	#print("\t\t\t\t\tshape size " + str(rect.shape.size))
+	#print("\t\t\t\t\tshape extnt" + str(rect.shape.extents))
 	#rect.disabled = false
 	#new_part.piece_detector.set_pickable(true)
 	#print("new piece created: detector %s" %new_part.piece_detector)
@@ -202,28 +222,28 @@ func set_new_part(part: MonsterPiece):
 
 func part_reposition(part: MonsterPiece):
 	print("PART REPOSITION!")
-	#var field_areas = part.drop_point_detector.get_overlapping_areas()
-	#var parts_areas = part.part_detector.get_overlapping_areas()
-	#var index: int = 0
-	#
-	#if parts_areas.is_empty():
-		#print(field_areas.has(piece_drop_area_left))
-		#if field_areas.has(piece_drop_area_right):
-			#index = pieces_holder.get_children().size()
-	#elif parts_areas.size() == 1:
-		#if field_areas.has(piece_drop_area_left):
-			#index = parts_areas[0].get_parent().get_index()
-		#else:
-			#index = parts_areas[0].get_parent().get_index() + 1
-	#else:
-		#index = parts_areas[0].get_parent().get_index()
-		#if index > parts_areas[1].get_parent().get_index():
-			#index = parts_areas[1].get_parent().get_index()
-		#
-		#index += 1
-#
-	#part.reparent(pieces_holder)
-	#pieces_holder.move_child(part, index)
+	var field_areas = part.piece_detector.get_overlapping_areas()
+	var parts_areas = part.part_detector.get_overlapping_areas()
+	var index: int = 0
+	
+	if parts_areas.is_empty():
+		print(field_areas.has(piece_drop))
+		if field_areas.has(piece_drop):
+			index = pieces_holder.get_children().size()
+	elif parts_areas.size() == 1:
+		if field_areas.has(piece_drop):
+			index = parts_areas[0].get_parent().get_index()
+		else:
+			index = parts_areas[0].get_parent().get_index() + 1
+	else:
+		index = parts_areas[0].get_parent().get_index()
+		if index > parts_areas[1].get_parent().get_index():
+			index = parts_areas[1].get_parent().get_index()
+		
+		index += 1
+
+	part.reparent(pieces_holder)
+	pieces_holder.move_child(part, index)
 	return;
 
 #-------------------------------------------------------------------------------

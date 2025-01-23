@@ -10,23 +10,44 @@
 
 [node name="Game" type="Node"]
 
-[node name="Library Section" type="Control" parent="."]
+[node name="Pieces Used Section" type="Control" parent="."]
 layout_mode = 3
-anchor_right = 0.11
+anchor_left = 0.6
+anchor_right = 0.691
+anchor_bottom = 0.963
+offset_left = -137.2
+offset_right = -0.0320435
+offset_bottom = 23.976
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PiecesUsedContainer" parent="Pieces Used Section" instance=ExtResource("7_f31lo")]
+z_index = 1
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -39.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
 grow_vertical = 2
 
-[node name="PartsLibrary" parent="Library Section" instance=ExtResource("2_xf0k2")]
-layout_mode = 2
-anchors_preset = 0
-anchor_bottom = 0.0
+[node name="Field2" parent="Pieces Used Section" instance=ExtResource("1_fkhir")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 0.0
 offset_top = 0.0
-offset_right = 127.0
-offset_bottom = 645.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Monster Section" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchor_left = 0.11
 anchor_right = 0.6
@@ -36,10 +57,11 @@ offset_right = -96.2
 offset_bottom = 40.0
 
 [node name="MonsterPanel" type="PanelContainer" parent="Monster Section"]
+z_index = 1
 layout_mode = 2
 offset_left = 13.0
 offset_top = 2.0
-offset_right = 130.0
+offset_right = 199.0
 offset_bottom = 646.0
 size_flags_horizontal = 2
 
@@ -130,41 +152,19 @@ position = Vector2(76.672, 7)
 [node name="CollisionShape2D" parent="Monster Section/Field1/CardDropAreaLeft" index="0"]
 position = Vector2(109.5, 161)
 
-[node name="Pieces Used Section" type="Control" parent="."]
-visible = false
+[node name="Library Section" type="Control" parent="."]
 layout_mode = 3
-anchor_left = 0.6
-anchor_right = 0.691
-anchor_bottom = 0.963
-offset_left = -137.2
-offset_right = -0.0320435
-offset_bottom = 23.976
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="PiecesUsedContainer" parent="Pieces Used Section" instance=ExtResource("7_f31lo")]
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
+anchor_right = 0.11
 anchor_bottom = 1.0
-offset_left = -39.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Field2" parent="Pieces Used Section" instance=ExtResource("1_fkhir")]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="PartsLibrary" parent="Library Section" instance=ExtResource("2_xf0k2")]
+layout_mode = 2
+anchors_preset = 0
+anchor_bottom = 0.0
 offset_left = 0.0
 offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 127.0
+offset_bottom = 645.0
 
 [editable path="Monster Section/Field1"]

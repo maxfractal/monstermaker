@@ -34,10 +34,10 @@ func _ready():
 func _input(event):
 	state_machine.on_input(event)
 
-	if event is InputEventMouseButton:
-		if event.pressed:
-			count += 1
-			print("Click:" + str(count))
+	#if event is InputEventMouseButton:
+		#if event.pressed:
+			#count += 1
+			#print("Click:" + str(count))
 	return
 	
 func _on_gui_input(event):

@@ -12,14 +12,14 @@
 size = Vector2(100, 98)
 
 [node name="MonsterPiece" type="Control"]
+z_index = 10
+z_as_relative = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -50.0
-offset_top = -50.0
-offset_right = -1102.0
-offset_bottom = -598.0
+offset_right = -1052.0
+offset_bottom = -548.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -55,6 +55,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MPTextureRect" type="TextureRect" parent="."]
+z_index = 2
 clip_contents = true
 layout_mode = 1
 anchors_preset = 8
@@ -72,12 +73,12 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="IconTextureRect" type="TextureRect" parent="."]
+z_index = 2
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 expand_mode = 3
 stretch_mode = 4
-flip_v = true
 
 [node name="MonsterPieceStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_a0aeb")
@@ -108,3 +109,7 @@ monsterpiece = NodePath("../..")
 [node name="MPCollisionShape2D" type="CollisionShape2D" parent="MPDetector"]
 position = Vector2(50, 50)
 shape = SubResource("RectangleShape2D_dri7j")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
