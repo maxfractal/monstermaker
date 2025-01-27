@@ -60,6 +60,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+#-------------------------------------------------------------------------------
+# Library loadings and piece creation
+#-------------------------------------------------------------------------------
+
 # main function to load a folder of pieces into the library.
 #
 func load_Library():
@@ -67,9 +71,9 @@ func load_Library():
 	print("\tLibrary folder path:", folder_path)
 	
 	
-	print("library   z-index: %s" % str(self.z_index))
-	print("lib hldr  z-index: %s" % str(self.pieces_holder.z_index))
-	print("drop area z-index: %s" % str(get_node("/root/Game/Monster Section").z_index))
+	#print("library   z-index: %s" % str(self.z_index))
+	#print("lib hldr  z-index: %s" % str(self.pieces_holder.z_index))
+	#print("drop area z-index: %s" % str(get_node("/root/Game/Monster Section").z_index))
 	#print("libr area: %s" % str(piece_drop.z_index))
 	
 	#	open the folder and traverse the files, loading all of the images
@@ -95,13 +99,13 @@ func load_Library():
 
 	# DEBUG
 	#   see what children the vbox has
-	print("\n\t<-- library piece list -->")
-	var i = 0
-	for child in pieces_holder.get_children():
-		i=i+1
-		#print("\t piece %d" %i, " = %s" %child.name + "  \tpos=%s" % str(child.get_screen_position()))
-		#print("\t piece %d" %i, " = %s" %child.name + "  \tZ=%s" % str(child.z_index) + " \tZ relative=%s" % str(child.z_relative))
-	print("\t<-- END of library piece list -->\n")
+	#print("\n\t<-- library piece list -->")
+	#var i = 0
+	#for child in pieces_holder.get_children():
+		#i=i+1
+		##print("\t piece %d" %i, " = %s" %child.name + "  \tpos=%s" % str(child.get_screen_position()))
+		##print("\t piece %d" %i, " = %s" %child.name + "  \tZ=%s" % str(child.z_index) + " \tZ relative=%s" % str(child.z_relative))
+	#print("\t<-- END of library piece list -->\n")
 	print("End loading library")
 	return
 	
@@ -159,13 +163,13 @@ func generate_piece(file_path):
 	the_shape.set_size(Vector2(50,50))
 	#the_shape.size = Vector2(50, 50)
 
-	print("\t\t\t\t\tpiece z    " + str(new_part.z_index))
-	print("\t\t\t\t\tpiece spos " + str(new_part.get_screen_position()))
-	print("\t\t\t\t\tpiece rect " + str(new_part.get_rect()))
-	print("\t\t\t\t\tpiece globl" + str(new_part.get_global_rect()))
-	print("\t\t\t\t\ttexture pos" + str(new_part.piece_texture_rect.get_position()))
-	print("\t\t\t\t\ttexture siz" + str(new_part.piece_texture_rect.get_size()))
-	print("\t\t\t\t\ttexture off" + str(new_part.piece_texture_rect.get_pivot_offset()))
+	#print("\t\t\t\t\tpiece z    " + str(new_part.z_index))
+	#print("\t\t\t\t\tpiece spos " + str(new_part.get_screen_position()))
+	#print("\t\t\t\t\tpiece rect " + str(new_part.get_rect()))
+	#print("\t\t\t\t\tpiece globl" + str(new_part.get_global_rect()))
+	#print("\t\t\t\t\ttexture pos" + str(new_part.piece_texture_rect.get_position()))
+	#print("\t\t\t\t\ttexture siz" + str(new_part.piece_texture_rect.get_size()))
+	#print("\t\t\t\t\ttexture off" + str(new_part.piece_texture_rect.get_pivot_offset()))
 	#print("\t\t\t\t\tdtector pos" + str(new_part.piece_detector.position))
 	#print("\t\t\t\t\trect   pos " + str(rect.position))
 	#print("\t\t\t\t\tshape size " + str(rect.shape.size))
@@ -212,6 +216,10 @@ func scale_texture(piece_texture_rect):
 		#print("--------new size (%d" % new_width + ",%4d" % new_height + ")")
 		return Vector2(new_width, new_height)
 	return Vector2(1,1)
+
+#-------------------------------------------------------------------------------
+# piece dragging + dropping
+#-------------------------------------------------------------------------------
 
 func return_part_starting_position(part: MonsterPiece):
 	part.reparent(pieces_holder)
