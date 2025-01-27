@@ -9,11 +9,11 @@ func _enter():
 	var field_areas = monsterpiece.drop_point_detector.get_overlapping_areas()
 
 	if field_areas.is_empty():
-		monsterpiece.home_field.return_card_starting_position(monsterpiece)
+		monsterpiece.home_field.return_monsterpiece_starting_position(monsterpiece)
 	elif field_areas[0].get_parent() == monsterpiece.home_field:
-		monsterpiece.home_field.card_reposition(monsterpiece)
+		monsterpiece.home_field.monsterpiece_reposition(monsterpiece)
 	else:
-		var new_field: Field = field_areas[0].get_parent()
+		var new_field: PieceField = field_areas[0].get_parent()
 		new_field.set_new_monsterpiece(monsterpiece)
 
 	transitioned.emit("idle")

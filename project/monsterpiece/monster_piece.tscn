@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://jfgyvklek2dw"]
+[gd_scene load_steps=10 format=3 uid="uid://jfgyvklek2dw"]
 
 [ext_resource type="Script" path="res://project/monsterpiece/monster_piece.gd" id="1_puuqk"]
 [ext_resource type="Script" path="res://project/monsterpiece/state_machine/monsterpiece_state_machine.gd" id="2_a0aeb"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" path="res://project/monsterpiece/state_machine/states/drag_monsterpiece_state.gd" id="5_dpdii"]
 [ext_resource type="Script" path="res://project/monsterpiece/state_machine/states/release_monsterpiece_state.gd" id="6_bkm8r"]
 [ext_resource type="Script" path="res://project/monsterpiece/state_machine/states/hover_monsterpiece_state.gd" id="7_ycxiu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rg7an"]
+size = Vector2(100, 150)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dri7j"]
 size = Vector2(100, 98)
@@ -104,7 +107,16 @@ monsterpiece = NodePath("../..")
 script = ExtResource("7_ycxiu")
 monsterpiece = NodePath("../..")
 
+[node name="DropPointDetector" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DropPointDetector"]
+position = Vector2(50, 75)
+shape = SubResource("RectangleShape2D_rg7an")
+
 [node name="MPDetector" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
 
 [node name="MPCollisionShape2D" type="CollisionShape2D" parent="MPDetector"]
 position = Vector2(50, 50)

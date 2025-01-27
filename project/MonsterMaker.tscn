@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://buh3412b0qtpp"]
+[gd_scene load_steps=9 format=3 uid="uid://buh3412b0qtpp"]
 
 [ext_resource type="PackedScene" uid="uid://biim2lxri0akl" path="res://project/field/field.tscn" id="1_fkhir"]
 [ext_resource type="PackedScene" uid="uid://ciqgnvw1xg7rc" path="res://project/library/library.tscn" id="2_xf0k2"]
+[ext_resource type="PackedScene" uid="uid://dx4mib3hp8esk" path="res://project/monsterfield/monster_field.tscn" id="3_0egq7"]
 [ext_resource type="PackedScene" uid="uid://3trgkf0u68ry" path="res://project/card/card.tscn" id="4_bv8hq"]
 [ext_resource type="Texture2D" uid="uid://dfo74gw5mmbu" path="res://art/Creatures/Skeleton/SkeletonPirate_04_Head-3-right.png" id="5_et247"]
 [ext_resource type="Texture2D" uid="uid://d4aa1sr52cbhg" path="res://art/Creatures/Skeleton/SkeletonPirate_01_upper-Torso-large.png" id="6_42jks"]
@@ -56,14 +57,12 @@ offset_left = 0.279999
 offset_right = -96.2
 offset_bottom = 40.0
 
-[node name="MonsterPanel" type="PanelContainer" parent="Monster Section"]
-z_index = 1
-layout_mode = 2
-offset_left = 13.0
-offset_top = 2.0
-offset_right = 199.0
-offset_bottom = 646.0
-size_flags_horizontal = 2
+[node name="MonsterField" parent="Monster Section" instance=ExtResource("3_0egq7")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 585.0
+offset_bottom = 644.0
 
 [node name="Field1" parent="Monster Section" instance=ExtResource("1_fkhir")]
 visible = false

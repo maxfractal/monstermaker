@@ -11,7 +11,7 @@
 #@icon("ref:///icons/H_SAMURAI.svg")
 #@icon("ref:///icons/shambling-mound.svg")
 #@icon("ref:///icons/B_DOBUTSUEN.png")
-class_name Library extends MarginContainer
+class_name Library extends PieceField
 #extends Field
 
 #-------------------------------------------------------------------------------
@@ -40,6 +40,9 @@ var folder_path = "res://art/Creatures/Skeleton/"  # Replace with your folder pa
 # load the monster piece scene ONCE so it can be instantiated when loading the library
 var new_piece_scene = preload("res://project/monsterpiece/monster_piece.tscn")
 
+#-------------------------------------------------------------------------------
+# class functions
+#-------------------------------------------------------------------------------
 # Called when the node enters the scene tree for the first time.
 #
 func _ready() -> void:

@@ -17,6 +17,7 @@ class_name MonsterPiece extends Control
 @onready var piece_texture_rect := $MPTextureRect
 @onready var icon_texture_rect := $MPTextureRect
 @onready var home_field: MarginContainer
+@onready var drop_point_detector := $DropPointDetector
 
 var index: int = 0
 var count = 0
