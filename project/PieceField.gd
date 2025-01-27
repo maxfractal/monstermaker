@@ -28,6 +28,17 @@ class_name PieceField extends MarginContainer
 #-------------------------------------------------------------------------------
 # class virtual functions
 #-------------------------------------------------------------------------------
+func monsterpiece_reposition(piece: MonsterPiece) -> void:
+	pass
+	
+func return_part_starting_position(part: MonsterPiece) -> void:
+	pass
+
+func set_new_part(part: MonsterPiece) -> void:
+	pass
+
+func part_reposition(part: MonsterPiece) -> void:
+	pass
 
 #-------------------------------------------------------------------------------
 # class functions

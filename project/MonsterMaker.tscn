@@ -29,8 +29,8 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -39.0
-offset_right = 0.0
+offset_left = -48.0
+offset_right = 12.0
 offset_bottom = 0.0
 grow_horizontal = 0
 grow_vertical = 2
@@ -59,9 +59,9 @@ offset_bottom = 40.0
 
 [node name="MonsterField" parent="Monster Section" instance=ExtResource("3_0egq7")]
 layout_mode = 0
-offset_left = 0.0
+offset_left = 20.0
 offset_top = 0.0
-offset_right = 585.0
+offset_right = 588.0
 offset_bottom = 644.0
 
 [node name="Field1" parent="Monster Section" instance=ExtResource("1_fkhir")]
