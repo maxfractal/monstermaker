@@ -9,16 +9,25 @@
 [ext_resource type="Texture2D" uid="uid://cghl6hgwssuvw" path="res://art/Creatures/Skeleton/SkeletonPirate_04_Pelvis-Large.png" id="7_5nghx"]
 [ext_resource type="PackedScene" uid="uid://bx5wjov5ipxn3" path="res://project/piecesUsedList/pieces_used_container.tscn" id="7_f31lo"]
 
-[node name="Game" type="Node"]
+[node name="Game" type="Control"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 796.0
+offset_bottom = 658.0
 
 [node name="Pieces Used Section" type="Control" parent="."]
-layout_mode = 3
-anchor_left = 0.6
-anchor_right = 0.691
-anchor_bottom = 0.963
-offset_left = -137.2
-offset_right = -0.0320435
-offset_bottom = 23.976
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -116.0
+offset_top = 1.0
+offset_right = -13.0
+offset_bottom = -11.0
+grow_horizontal = 0
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -29,8 +38,8 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -48.0
-offset_right = 12.0
+offset_left = -39.0
+offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 0
 grow_vertical = 2
@@ -43,37 +52,44 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 0.0
 offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
+offset_right = 0.182068
+offset_bottom = 0.369995
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Monster Section" type="Control" parent="."]
-layout_mode = 3
-anchor_left = 0.11
-anchor_right = 0.6
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 0.279999
-offset_right = -96.2
-offset_bottom = 40.0
+offset_left = -256.0
+offset_right = 316.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MonsterField" parent="Monster Section" instance=ExtResource("3_0egq7")]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 0.0
-offset_right = 588.0
-offset_bottom = 644.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -14.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Field1" parent="Monster Section" instance=ExtResource("1_fkhir")]
 visible = false
 layout_mode = 1
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 139.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
 offset_top = 0.0
-offset_right = 416.0
-offset_bottom = 648.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="CardsHolder" parent="Monster Section/Field1" index="2"]
 size_flags_horizontal = 0
@@ -152,18 +168,20 @@ position = Vector2(76.672, 7)
 position = Vector2(109.5, 161)
 
 [node name="Library Section" type="Control" parent="."]
-layout_mode = 3
+layout_mode = 1
 anchor_right = 0.11
 anchor_bottom = 1.0
+offset_right = 42.44
 grow_vertical = 2
 
 [node name="PartsLibrary" parent="Library Section" instance=ExtResource("2_xf0k2")]
-layout_mode = 2
-anchors_preset = 0
-anchor_bottom = 0.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
 offset_left = 0.0
 offset_top = 0.0
-offset_right = 127.0
-offset_bottom = 645.0
+offset_right = 0.0
+offset_bottom = -9.0
+grow_horizontal = 2
 
 [editable path="Monster Section/Field1"]
