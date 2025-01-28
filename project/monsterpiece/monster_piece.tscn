@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://project/monsterpiece/state_machine/states/hover_monsterpiece_state.gd" id="7_ycxiu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rg7an"]
-size = Vector2(100, 150)
+size = Vector2(100, 99)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dri7j"]
 size = Vector2(100, 98)
@@ -102,7 +102,7 @@ monsterpiece = NodePath("../..")
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DropPointDetector"]
-position = Vector2(50, 75)
+position = Vector2(50, 49.5)
 shape = SubResource("RectangleShape2D_rg7an")
 
 [node name="MPDetector" type="Area2D" parent="."]
