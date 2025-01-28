@@ -221,40 +221,41 @@ func scale_texture(piece_texture_rect):
 # piece dragging + dropping
 #-------------------------------------------------------------------------------
 
-func return_part_starting_position(part: MonsterPiece):
-	part.reparent(pieces_holder)
-	pieces_holder.move_child(part, part.index)
+func return_monsterpiece_starting_position(piece: MonsterPiece):
+	piece.reparent(pieces_holder)
+	pieces_holder.move_child(piece, piece.index)
+	print("return piece starting position (library) %s " % piece.index)
 
 
-func set_new_part(part: MonsterPiece):
-	part_reposition(part)
-	part.home_field = self
+func set_new_monsterpiece(piece: MonsterPiece):
+	monsterpiece_reposition(piece)
+	piece.home_field = self
 
 
-func part_reposition(part: MonsterPiece):
-	print("PART REPOSITION!")
-	var field_areas = part.piece_detector.get_overlapping_areas()
-	var parts_areas = part.part_detector.get_overlapping_areas()
+func monsterpiece_reposition(piece: MonsterPiece):
+	print("PIECE REPOSITION! (library)")
+	var field_areas = piece.drop_point_detector.get_overlapping_areas()
+	var pieces_areas = piece.piece_detector.get_overlapping_areas()
 	var index: int = 0
 	
-	if parts_areas.is_empty():
+	if pieces_areas.is_empty():
 		print(field_areas.has(piece_drop))
 		if field_areas.has(piece_drop):
 			index = pieces_holder.get_children().size()
-	elif parts_areas.size() == 1:
+	elif pieces_areas.size() == 1:
 		if field_areas.has(piece_drop):
-			index = parts_areas[0].get_parent().get_index()
+			index = pieces_areas[0].get_parent().get_index()
 		else:
-			index = parts_areas[0].get_parent().get_index() + 1
+			index = pieces_areas[0].get_parent().get_index() + 1
 	else:
-		index = parts_areas[0].get_parent().get_index()
-		if index > parts_areas[1].get_parent().get_index():
-			index = parts_areas[1].get_parent().get_index()
-		
+		index = pieces_areas[0].get_parent().get_index()
+		if index > pieces_areas[1].get_parent().get_index():
+			index = pieces_areas[1].get_parent().get_index()
 		index += 1
 
-	part.reparent(pieces_holder)
-	pieces_holder.move_child(part, index)
+	piece.reparent(pieces_holder)
+	pieces_holder.move_child(piece, index)
+	print("library reposition: %s" % index)
 	return;
 
 #-------------------------------------------------------------------------------

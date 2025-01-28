@@ -31,13 +31,10 @@ class_name PieceField extends MarginContainer
 func monsterpiece_reposition(piece: MonsterPiece) -> void:
 	pass
 	
-func return_part_starting_position(part: MonsterPiece) -> void:
+func return_monsterpiece_starting_position(part: MonsterPiece) -> void:
 	pass
 
-func set_new_part(part: MonsterPiece) -> void:
-	pass
-
-func part_reposition(part: MonsterPiece) -> void:
+func set_new_monsterpiece(part: MonsterPiece) -> void:
 	pass
 
 #-------------------------------------------------------------------------------

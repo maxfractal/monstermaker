@@ -28,11 +28,11 @@ class_name MonsterField extends PieceField
 #-------------------------------------------------------------------------------
 func return_monsterpiece_starting_position(piece: MonsterPiece):
     piece.reparent(pieces_holder)
-    #pieces_holder.move_child(piece, piece.index)
+    pieces_holder.move_child(piece, piece.index)
     return;
 
 func set_new_monsterpiece(piece: MonsterPiece):
-    #monsterpiece_reposition(piece)
+    monsterpiece_reposition(piece)
     piece.home_field = self
     return;
 
