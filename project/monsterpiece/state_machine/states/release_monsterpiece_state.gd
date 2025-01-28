@@ -16,16 +16,19 @@ func _enter():
 		# if the piece is released and there is NOT a field below, return it to
 		# it's original position
 		#
+		print("No fields : piece : %s ", monsterpiece.name)
 		monsterpiece.home_field.return_monsterpiece_starting_position(monsterpiece)
 	elif field_areas[0].get_parent() == monsterpiece.home_field:
 		# ORIGINAL FIELD
 		# if there *IS* a field below and it is the same field it came from,
 		# then reposition it in the current field
+		print("field %s : " % monsterpiece.home_field.name ,"piece : %s" % monsterpiece.name)
 		monsterpiece.home_field.monsterpiece_reposition(monsterpiece)
 	else:
 		# NEW FIELD
 		# Get the new field and parent to it, positioning it as needed.
 		var new_field: PieceField = field_areas[0].get_parent()
 		new_field.set_new_monsterpiece(monsterpiece)
+		print("field %s : " % new_field.name ,"piece : %s" % monsterpiece.name)
 
 	transitioned.emit("idle")

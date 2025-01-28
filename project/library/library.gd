@@ -106,7 +106,7 @@ func load_Library():
 		##print("\t piece %d" %i, " = %s" %child.name + "  \tpos=%s" % str(child.get_screen_position()))
 		##print("\t piece %d" %i, " = %s" %child.name + "  \tZ=%s" % str(child.z_index) + " \tZ relative=%s" % str(child.z_relative))
 	#print("\t<-- END of library piece list -->\n")
-	print("End loading library")
+	print("End loading library\n\n")
 	return
 	
 #	generate_piece will
@@ -133,8 +133,8 @@ func generate_piece(file_path):
 	#print("\t\t\t\tpiece added %s" %new_part.name + " - container size = %d" % pieces_holder.get_child_count())
 
 	#  set the size + position after adding to parent
-	new_part.position = Vector2(0,0)
-	new_part.size = Vector2(50,50)
+	#new_part.position = Vector2(0,0)
+	#new_part.size = Vector2(50,50)
 	new_part.home_field = self			# set the "parent" of drop to this library
 	
 	# fill in the textureRect, set the new texture, then add it to the new piece
@@ -142,7 +142,7 @@ func generate_piece(file_path):
 	#new_part.icon_texture_rect.visible = false
 	#new_part.icon_texture_rect.visible = not new_part.icon_texture_rect.visible
 	new_part.piece_texture_rect.texture = loadedTexture
-	new_part.piece_texture_rect.set_position(Vector2(0,0))
+	#new_part.piece_texture_rect.set_position(Vector2(0,0))
 
 	# set part + texture variables	
 	#new_part.y_sort_enabled = true
