@@ -6,7 +6,6 @@
 size = Vector2(564, 642.5)
 
 [node name="MonsterField" type="MarginContainer"]
-z_index = 1
 offset_left = 13.0
 offset_top = 2.0
 offset_right = 581.0
@@ -18,7 +17,7 @@ script = ExtResource("1_dqcma")
 layout_mode = 2
 
 [node name="PiecesDropArea" type="Area2D" parent="."]
-position = Vector2(0, 25)
+z_index = -1
 
 [node name="PiecesDropCollisionShape2D" type="CollisionShape2D" parent="PiecesDropArea"]
 position = Vector2(280, 302.25)
