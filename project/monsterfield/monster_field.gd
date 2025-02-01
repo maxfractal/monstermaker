@@ -18,6 +18,7 @@ class_name MonsterField extends PieceField
 #-------------------------------------------------------------------------------
 @onready var pieces_holder:= $MonsterPieces
 
+
 #-------------------------------------------------------------------------------
 # preloads
 #-------------------------------------------------------------------------------
@@ -38,28 +39,32 @@ func set_new_monsterpiece(piece: MonsterPiece):
 
 func monsterpiece_reposition(piece: MonsterPiece):
 	print("PART REPOSITION!")
-	#var field_areas = piece.drop_point_detector.get_overlapping_areas()
-	#var pieces_areas = piece.piece_detector.get_overlapping_areas()
-	#var index: int = 0
-
-	#if parts_areas.is_empty():
-		##print(pieces_holder.has(part))
-		##if field_areas.has(part):
-			#index = pieces_holder.get_children().size()
-	#elif parts_areas.size() == 1:
-		#if field_areas.has(part):
-			#index = parts_areas[0].get_parent().get_index()
-		#else:
-			#index = parts_areas[0].get_parent().get_index() + 1
-	#else:
-		#index = parts_areas[0].get_parent().get_index()
-		#if index > parts_areas[1].get_parent().get_index():
-			#index = parts_areas[1].get_parent().get_index()
-		#
-		#index += 1
-
 	piece.reparent(pieces_holder)
 	pieces_holder.add_child(piece)
+
+	print("\tglobal mouse pos = %s" % piece.get_global_mouse_position())
+	print("\tsize = %s" % piece.size)
+	print("\tfield local pos = %s" % pieces_holder.position)
+	print("\tfield screen pos = %s" % pieces_holder.get_viewport().position)
+	print("\tglobal pos = %s" % piece.global_position)
+	print("\tdelta pos = %s" % (piece.get_global_mouse_position() - piece.global_position))
+	piece.pivot_offset = piece.get_global_mouse_position() - piece.global_position
+	print("\tpiece pos before %s" % piece.position)
+	print("\ttexturerect pos before %s" % piece.piece_texture_rect.position)
+	print("\t\t--------------")
+	
+	# this setting of position is shit!
+	#
+	#	there should be a way to set the root node of the piece and every child node
+	# is relative.
+	#
+	#	also the calculation is garbage and should be more flexible
+	#
+	piece.setPosition(
+		Vector2(-468,-322) + piece.global_position
+		)
+	print("\tpiece pos after  %s" % piece.position)
+	print("\ttexturerect pos after %s" % piece.piece_texture_rect.position)
 	return;
 	
 #-------------------------------------------------------------------------------

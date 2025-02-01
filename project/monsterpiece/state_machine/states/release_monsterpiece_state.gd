@@ -23,7 +23,7 @@ func _enter():
 		# ORIGINAL FIELD
 		# if there *IS* a field below and it is the same field it came from,
 		# then reposition it in the current field
-		print("\tfield %s : " % monsterpiece.home_field.name ,"piece : %s" % monsterpiece.name)
+		print("\thome field %s : " % monsterpiece.home_field.name ,"piece : %s" % monsterpiece.name)
 		monsterpiece.home_field.monsterpiece_reposition(monsterpiece)
 	else:
 		# NEW FIELD

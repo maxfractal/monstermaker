@@ -23,6 +23,22 @@ var index: int = 0
 var count = 0
 
 #-------------------------------------------------------------------------------
+# class functions
+#-------------------------------------------------------------------------------
+func setPosition(newPosition):
+	self.position = newPosition
+	piece_texture_rect.position = newPosition
+	$MPColorRect.position = newPosition
+	$MPNameLabel.position = newPosition
+	$MPLabel.position = newPosition
+	drop_point_detector.position = newPosition
+	collision_shape.position = newPosition
+	piece_detector.position = newPosition
+	$DropPointDetector/CollisionShape2D.position = newPosition
+	return
+	
+#-------------------------------------------------------------------------------
+# built-in functions
 #-------------------------------------------------------------------------------
 func _ready():
 	#print("monsterpiece ready start - %s" %name)
@@ -35,7 +51,10 @@ func _ready():
 func _input(event):
 	state_machine.on_input(event)
 
-	#if event is InputEventMouseButton:
+	if event.is_action_pressed("mouse_left"):
+		print("mouse click at: %s " % event.position)
+
+#	if event is InputEventMouseButton:
 		#if event.pressed:
 			#count += 1
 			#print("Click:" + str(count))
