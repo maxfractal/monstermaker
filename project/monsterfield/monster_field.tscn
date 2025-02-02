@@ -3,13 +3,11 @@
 [ext_resource type="Script" path="res://project/monsterfield/monster_field.gd" id="1_dqcma"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wbd4h"]
-size = Vector2(564, 642.5)
+size = Vector2(550, 550)
 
 [node name="MonsterField" type="MarginContainer"]
-offset_left = 13.0
-offset_top = 2.0
-offset_right = 581.0
-offset_bottom = 646.0
+offset_right = 550.0
+offset_bottom = 550.0
 size_flags_horizontal = 2
 script = ExtResource("1_dqcma")
 
@@ -20,5 +18,5 @@ layout_mode = 2
 z_index = -1
 
 [node name="PiecesDropCollisionShape2D" type="CollisionShape2D" parent="PiecesDropArea"]
-position = Vector2(280, 302.25)
+position = Vector2(275, 275)
 shape = SubResource("RectangleShape2D_wbd4h")

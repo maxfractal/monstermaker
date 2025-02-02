@@ -18,6 +18,7 @@ func _enter():
 		# it's original position
 		#
 		print("\tNo fields : piece : %s ", monsterpiece.name)
+		
 		monsterpiece.home_field.return_monsterpiece_starting_position(monsterpiece)
 	elif field_areas[0].get_parent() == monsterpiece.home_field:
 		# ORIGINAL FIELD

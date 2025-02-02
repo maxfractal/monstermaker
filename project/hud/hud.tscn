@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://m1taho8f4p8n"]
+
+[ext_resource type="Script" path="res://project/hud/dbgLog.gd" id="1_ntc3e"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="dbgNode" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ntc3e")

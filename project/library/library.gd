@@ -106,7 +106,8 @@ func load_Library():
 		##print("\t piece %d" %i, " = %s" %child.name + "  \tpos=%s" % str(child.get_screen_position()))
 		##print("\t piece %d" %i, " = %s" %child.name + "  \tZ=%s" % str(child.z_index) + " \tZ relative=%s" % str(child.z_relative))
 	#print("\t<-- END of library piece list -->\n")
-	print("End loading library\n\n")
+	#print("End loading library\n\n")
+	dbgLog.print("End loading library\n\n")
 	return
 	
 #	generate_piece will

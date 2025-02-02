@@ -42,29 +42,30 @@ func monsterpiece_reposition(piece: MonsterPiece):
 	piece.reparent(pieces_holder)
 	pieces_holder.add_child(piece)
 
-	print("\tglobal mouse pos = %s" % piece.get_global_mouse_position())
-	print("\tsize = %s" % piece.size)
-	print("\tfield local pos = %s" % pieces_holder.position)
-	print("\tfield screen pos = %s" % pieces_holder.get_viewport().position)
-	print("\tglobal pos = %s" % piece.global_position)
-	print("\tdelta pos = %s" % (piece.get_global_mouse_position() - piece.global_position))
-	piece.pivot_offset = piece.get_global_mouse_position() - piece.global_position
-	print("\tpiece pos before %s" % piece.position)
-	print("\ttexturerect pos before %s" % piece.piece_texture_rect.position)
-	print("\t\t--------------")
+	dbgLog.print("\tglobal mouse pos = %s" % piece.get_global_mouse_position())
+	dbgLog.print("\tsize = %s" % piece.piece_texture_rect.size)
+	dbgLog.print("\tfield local pos = %s" % pieces_holder.position)
+	dbgLog.print("\tfield screen pos = %s" % pieces_holder.global_position)
+	dbgLog.print("\tglobal pos = %s" % piece.global_position)
+	dbgLog.print("\tdelta pos = %s" % (piece.get_global_mouse_position() - piece.global_position))
 	
-	# this setting of position is shit!
+	piece.pivot_offset = piece.get_global_mouse_position() - piece.global_position
+	
+	dbgLog.print("\tpiece pos before %s" % piece.position)
+	dbgLog.print("\ttexturerect pos before %s" % piece.piece_texture_rect.position)
+	dbgLog.print("\t\t--------------")
+	
+	# new position calculation:
 	#
-	#	there should be a way to set the root node of the piece and every child node
-	# is relative.
+	#	mouse position - (field global position + 1/2 the field size) - (mouse position - piece global position)
 	#
-	#	also the calculation is garbage and should be more flexible
-	#
-	piece.setPosition(
-		Vector2(-468,-322) + piece.global_position
-		)
-	print("\tpiece pos after  %s" % piece.position)
-	print("\ttexturerect pos after %s" % piece.piece_texture_rect.position)
+	var new_position
+	new_position = (piece.get_global_mouse_position() - (self.global_position+(self.size/2))) - (piece.get_global_mouse_position() - piece.global_position)
+	piece.setPosition( new_position )
+	
+	dbgLog.print("\tpiece pos after  %s" % piece.position)
+	dbgLog.print("\ttexturerect pos after %s" % piece.piece_texture_rect.position)
+	dbgLog.print("===============")
 	return;
 	
 #-------------------------------------------------------------------------------

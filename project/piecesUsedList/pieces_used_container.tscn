@@ -19,7 +19,7 @@ vertical_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
-color = Color(0.412236, 0.511497, 0.627156, 1)
+color = Color(0.130535, 0.30823, 0.046947, 1)
 
 [node name="PiecesMarginContainer" type="MarginContainer" parent="."]
 z_index = 1

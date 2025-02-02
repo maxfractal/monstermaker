@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://buh3412b0qtpp"]
+[gd_scene load_steps=10 format=3 uid="uid://buh3412b0qtpp"]
 
 [ext_resource type="PackedScene" uid="uid://biim2lxri0akl" path="res://project/field/field.tscn" id="1_fkhir"]
 [ext_resource type="PackedScene" uid="uid://ciqgnvw1xg7rc" path="res://project/library/library.tscn" id="2_xf0k2"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d4aa1sr52cbhg" path="res://art/Creatures/Skeleton/SkeletonPirate_01_upper-Torso-large.png" id="6_42jks"]
 [ext_resource type="Texture2D" uid="uid://cghl6hgwssuvw" path="res://art/Creatures/Skeleton/SkeletonPirate_04_Pelvis-Large.png" id="7_5nghx"]
 [ext_resource type="PackedScene" uid="uid://bx5wjov5ipxn3" path="res://project/piecesUsedList/pieces_used_container.tscn" id="7_f31lo"]
+[ext_resource type="Script" path="res://project/hud/dbgLog.gd" id="9_06jct"]
 
 [node name="Game" type="Node2D"]
 
@@ -31,10 +32,10 @@ grow_vertical = 1
 
 [node name="MonsterField" parent="GameCanvas/Control" instance=ExtResource("3_0egq7")]
 layout_mode = 0
-offset_left = 185.0
-offset_top = -1.0
-offset_right = 753.0
-offset_bottom = 643.0
+offset_left = 152.0
+offset_top = 40.0
+offset_right = 702.0
+offset_bottom = 590.0
 
 [node name="Pieces Used Section" type="Control" parent="."]
 visible = false
@@ -186,5 +187,15 @@ anchor_right = 0.11
 anchor_bottom = 1.0
 offset_right = 42.44
 grow_vertical = 2
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 800.0
+offset_right = 1140.0
+offset_bottom = 638.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("9_06jct")
 
 [editable path="Monster Section/Field1"]
