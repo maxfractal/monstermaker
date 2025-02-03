@@ -2,3 +2,4 @@
 .godot/.gdignore
 /.godot
 *.tmp
+.vscode
