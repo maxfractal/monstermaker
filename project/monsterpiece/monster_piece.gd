@@ -13,11 +13,12 @@ class_name MonsterPiece extends Control
 @onready var name_label := $MPNameLabel
 @onready var state_machine := $MonsterPieceStateMachine
 @onready var piece_detector := $MPDetector
-@onready var collision_shape:= $MPDetector/MPCollisionShape2D
+@onready var piece_collision_shape:= $MPDetector/MPCollisionShape2D
 @onready var piece_texture_rect := $MPTextureRect
 @onready var icon_texture_rect := $MPTextureRect
-@onready var home_field: MarginContainer
 @onready var drop_point_detector := $DropPointDetector
+@onready var drop_point_collision_shape := $MPDetector/MPCollisionShape2D
+@onready var home_field: MarginContainer
 
 var index: int = 0
 var count = 0
@@ -28,13 +29,13 @@ var count = 0
 func setPosition(newPosition):
 	self.position = newPosition
 	piece_texture_rect.position = newPosition
-	$MPColorRect.position = newPosition
-	$MPNameLabel.position = newPosition
-	$MPLabel.position = newPosition
-	drop_point_detector.position = newPosition
-	collision_shape.position = newPosition
-	piece_detector.position = newPosition
-	$DropPointDetector/CollisionShape2D.position = newPosition
+	color_rect.position = newPosition
+	name_label.position = newPosition
+	label.position = newPosition
+	#drop_point_detector.position = Vector2(0,0) #newPosition
+	#piece_collision_shape.position = Vector2(50,50) #newPosition
+	#piece_detector.position = Vector2(0,0) #newPosition
+	piece_collision_shape.position = Vector2(50,50) #newPosition
 	return
 	
 #-------------------------------------------------------------------------------

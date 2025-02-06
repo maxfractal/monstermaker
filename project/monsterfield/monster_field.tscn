@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dx4mib3hp8esk"]
+[gd_scene load_steps=5 format=3 uid="uid://dx4mib3hp8esk"]
 
 [ext_resource type="Script" path="res://project/monsterfield/monster_field.gd" id="1_dqcma"]
+[ext_resource type="Texture2D" uid="uid://cldbrsmwfyi7a" path="res://art/GUI/Monster Maker - Field background.png" id="2_daobr"]
+[ext_resource type="Texture2D" uid="uid://r3jfoo87l6wt" path="res://Cards DragNDrop.apple-touch-icon.png" id="3_ss1tm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wbd4h"]
 size = Vector2(550, 550)
@@ -11,8 +13,27 @@ offset_bottom = 550.0
 size_flags_horizontal = 2
 script = ExtResource("1_dqcma")
 
-[node name="MonsterPieces" type="PanelContainer" parent="."]
+[node name="background" type="TextureRect" parent="."]
 layout_mode = 2
+texture = ExtResource("2_daobr")
+
+[node name="MonsterPieces" type="MarginContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+z_index = -1
+layout_mode = 2
+
+[node name="bounce" type="Panel" parent="MonsterPieces"]
+z_index = 2
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="btexture" type="TextureRect" parent="MonsterPieces/bounce"]
+offset_right = 180.0
+offset_bottom = 180.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_ss1tm")
+stretch_mode = 4
 
 [node name="PiecesDropArea" type="Area2D" parent="."]
 z_index = -1
@@ -20,3 +41,4 @@ z_index = -1
 [node name="PiecesDropCollisionShape2D" type="CollisionShape2D" parent="PiecesDropArea"]
 position = Vector2(275, 275)
 shape = SubResource("RectangleShape2D_wbd4h")
+debug_color = Color(0, 0.595, 0.7, 0.356863)

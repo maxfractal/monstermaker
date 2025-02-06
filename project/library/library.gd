@@ -153,15 +153,14 @@ func generate_piece(file_path):
 
 	# set up the collision shape
 	var rect = CollisionShape2D.new()
-	new_part.piece_detector.add_child(rect)
-	
 	var the_shape = RectangleShape2D.new()
 	rect.shape = the_shape
-	rect.position = Vector2(0,0)
-	new_part.collision_shape = rect
+	new_part.piece_detector.add_child(rect)
+	rect.position = Vector2(50,50)
+	the_shape.set_size(Vector2(100,100))
+	#new_part.piece_collision_shape = rect
 	
 	#the_shape.extents = Vector2(51, 51)
-	the_shape.set_size(Vector2(50,50))
 	#the_shape.size = Vector2(50, 50)
 
 	#print("\t\t\t\t\tpiece z    " + str(new_part.z_index))
@@ -234,7 +233,7 @@ func set_new_monsterpiece(piece: MonsterPiece):
 
 
 func monsterpiece_reposition(piece: MonsterPiece):
-	print("PIECE REPOSITION! (library)")
+	dbgLog.print("-------------PART REPOSITION (library)")
 	var field_areas = piece.drop_point_detector.get_overlapping_areas()
 	var pieces_areas = piece.piece_detector.get_overlapping_areas()
 	var index: int = 0

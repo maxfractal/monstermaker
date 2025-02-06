@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ciqgnvw1xg7rc"]
+[gd_scene load_steps=7 format=3 uid="uid://ciqgnvw1xg7rc"]
 
 [ext_resource type="Script" path="res://project/library/library.gd" id="1_3o500"]
 [ext_resource type="Script" path="res://project/library/load_library_button.gd" id="2_c77rh"]
 [ext_resource type="Script" path="res://project/library/library_folder_select_dialog.gd" id="3_wlnhf"]
+[ext_resource type="Texture2D" uid="uid://dpfc0sxnxex3m" path="res://art/GUI/Monster Maker - Library background.png" id="4_wke7j"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rti6s"]
 outline_size = 3
@@ -24,8 +25,14 @@ grow_vertical = 2
 script = ExtResource("1_3o500")
 
 [node name="LibraryPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 2
 mouse_filter = 2
+
+[node name="background" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("4_wke7j")
+expand_mode = 4
 
 [node name="LibraryTitle" type="Label" parent="."]
 z_index = 2
@@ -43,6 +50,7 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_bottom = 30
 
 [node name="PartsScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+clip_contents = false
 layout_mode = 2
 horizontal_scroll_mode = 0
 
@@ -59,6 +67,7 @@ position = Vector2(0, 25)
 [node name="LibraryDropCollisionShape2D" type="CollisionShape2D" parent="LibraryPartDrop"]
 position = Vector2(62, 292.75)
 shape = SubResource("RectangleShape2D_06w7q")
+debug_color = Color(0.446422, 0.4371, 0.47, 0)
 
 [node name="LoadLibraryButton" type="Button" parent="."]
 layout_mode = 2
