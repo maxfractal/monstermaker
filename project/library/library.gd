@@ -223,7 +223,9 @@ func scale_texture(piece_texture_rect):
 
 func return_monsterpiece_starting_position(piece: MonsterPiece):
 	piece.reparent(pieces_holder)
-	pieces_holder.move_child(piece, piece.index)
+	
+	var new_position = Vector2(0,0)
+	update_piece_position( piece, new_position )	
 	print("return piece starting position (library) %s " % piece.index)
 
 
@@ -254,6 +256,8 @@ func monsterpiece_reposition(piece: MonsterPiece):
 		index += 1
 
 	piece.reparent(pieces_holder)
+	var new_position = Vector2(0,0)
+	update_piece_position( piece, new_position )	
 	pieces_holder.move_child(piece, index)
 	print("library reposition: %s" % index)
 	return;

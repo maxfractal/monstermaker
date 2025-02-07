@@ -21,7 +21,6 @@ class_name MonsterPiece extends Control
 @onready var home_field: MarginContainer
 
 var index: int = 0
-var count = 0
 
 #-------------------------------------------------------------------------------
 # class functions
@@ -52,13 +51,8 @@ func _ready():
 func _input(event):
 	state_machine.on_input(event)
 
-	if event.is_action_pressed("mouse_left"):
-		print("mouse click at: %s " % event.position)
-
-#	if event is InputEventMouseButton:
-		#if event.pressed:
-			#count += 1
-			#print("Click:" + str(count))
+	#if event.is_action_pressed("mouse_left"):
+		#print("mouse click at: %s " % event.position)
 	return
 	
 func _on_gui_input(event):

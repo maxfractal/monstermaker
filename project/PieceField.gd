@@ -38,6 +38,18 @@ func set_new_monsterpiece(part: MonsterPiece) -> void:
 	pass
 
 #-------------------------------------------------------------------------------
+# parent functions
+#-------------------------------------------------------------------------------
+func update_piece_position(piece: MonsterPiece, new_position: Vector2) -> void:
+	piece.drop_point_detector.position = new_position
+	piece.drop_point_collision_shape.position = new_position
+	piece.piece_detector.position = new_position
+	#for child in piece.piece_detector.get_children():
+			#child.position = new_position
+	piece.setPosition( new_position )
+
+
+#-------------------------------------------------------------------------------
 # class functions
 #-------------------------------------------------------------------------------
 # Called when the node enters the scene tree for the first time.
