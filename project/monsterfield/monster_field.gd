@@ -29,13 +29,15 @@ class_name MonsterField extends PieceField
 #-------------------------------------------------------------------------------
 func return_monsterpiece_starting_position(piece: MonsterPiece):
 	piece.reparent(pieces_holder)
-	pieces_holder.move_child(piece, piece.index)
+	#pieces_holder.move_child(piece, piece.index)
 	return;
 
 func set_new_monsterpiece(piece: MonsterPiece):
-	# first, reparent the piece to the new field it is going into
-	monsterpiece_reposition(piece)
+	# NOTE: reparent MUST be BEFORE setting position!
+	#
 	piece.home_field = self
+	piece.reparent(pieces_holder)
+	monsterpiece_reposition(piece)
 	return;
 
 func monsterpiece_reposition(piece: MonsterPiece):
@@ -63,25 +65,22 @@ func monsterpiece_reposition(piece: MonsterPiece):
 	dbgLog.print("\ttexturerect pos before %s" % piece.piece_texture_rect.position)
 	dbgLog.print("\t---------position recalculation---------")
 	
-	# NOTE: reparent MUST be BEFORE setting position!
-	#
-	piece.reparent(pieces_holder)
-	var index: int = 0;
-	index = pieces_holder.get_parent().get_index() + 1
-	pieces_holder.move_child(piece, piece.index)
-
+	#var index: int = 0;
+	#index = pieces_holder.get_parent().get_index() + 1
+	#pieces_holder.move_child(piece, piece.index)
+	#dbgLog.print("child index %s " % index + " out of %s" % pieces_holder.get_parent().get_index())
 	# new position calculation:
 	#	mouse position - (field global position + 1/2 the field size) - (mouse position - piece global position)
 	#
 	var new_position
 	#new_position = ((piece.get_global_mouse_position() - (self.global_position+(self.size/2))) - piece.get_local_mouse_position())
-	#new_position = pieces_holder.get_local_mouse_position()
-	new_position = (pieces_holder.get_local_mouse_position() - (piece.get_local_mouse_position() - pieces_holder.get_local_mouse_position()))
-	#new_position = Vector2(0,0)
-	bounce_piece.set_position(new_position)
+	new_position = pieces_holder.get_local_mouse_position()
+	#(0,0) UL - new_position = (pieces_holder.get_local_mouse_position() - (piece.get_local_mouse_position() - pieces_holder.get_local_mouse_position()))
+	#new_position = Vector2(50,50)
 
-	update_piece_position( piece, new_position )	
-	
+	bounce_piece.set_position(new_position)
+	update_piece_position( piece, new_position )
+
 	dbgLog.print("\tnew pos          = %s" % new_position)
 	dbgLog.print("\tpiece pos        = %s" % piece.position)
 	dbgLog.print("\ttexturerect pos  = %s" % piece.piece_texture_rect.position)
