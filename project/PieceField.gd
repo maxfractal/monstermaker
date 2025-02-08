@@ -102,6 +102,8 @@ func generate_piece(pieces_holder, texture_file_path):
 	
 	#the_shape.extents = Vector2(51, 51)
 	#the_shape.size = Vector2(50, 50)
+	var new_position = Vector2(0,0)
+	update_piece_position(new_part, new_position)
 
 	#print("\t\t\t\t\tpiece z    " + str(new_part.z_index))
 	#print("\t\t\t\t\tpiece spos " + str(new_part.get_screen_position()))

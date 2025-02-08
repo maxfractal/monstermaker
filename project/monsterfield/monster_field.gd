@@ -93,7 +93,8 @@ func monsterpiece_reposition(piece: MonsterPiece):
 	#(0,0) UL - new_position = (pieces_holder.get_local_mouse_position() - (piece.get_local_mouse_position() - pieces_holder.get_local_mouse_position()))
 	#new_position = Vector2(50,50)
 
-	bounce_piece.set_position(new_position)
+	if (bounce_piece != null):
+		bounce_piece.set_position(new_position)
 	update_piece_position( piece, new_position )
 
 	dbgLog.print("\tnew pos          = %s" % new_position)
