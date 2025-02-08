@@ -28,7 +28,7 @@ class_name MonsterField extends PieceField
 # piece dragging + dropping
 #-------------------------------------------------------------------------------
 func return_monsterpiece_starting_position(piece: MonsterPiece):
-	piece.reparent(pieces_holder)
+	monsterpiece_reposition(piece)
 	#pieces_holder.move_child(piece, piece.index)
 	return;
 
@@ -36,7 +36,6 @@ func set_new_monsterpiece(piece: MonsterPiece):
 	# NOTE: reparent MUST be BEFORE setting position!
 	#
 	piece.home_field = self
-	piece.reparent(pieces_holder)
 	monsterpiece_reposition(piece)
 	return;
 
@@ -58,8 +57,12 @@ func monsterpiece_reposition(piece: MonsterPiece):
 	for child in pieces_holder.get_children():
 		dbgLog.print("\t\tholder child = %s" % child.position + "  %s" % child.name)
 
+	if (piece.get_parent() != pieces_holder):
+		dbgLog.print("\t\treparent from %s" % piece.get_parent().name + "  to %s" % pieces_holder.name)
+		piece.reparent(pieces_holder)
+
 	#piece.pivot_offset = piece.get_global_mouse_position() - piece.global_position
-	#piece.pivot_offset = Vector2(0,0)
+	piece.pivot_offset = Vector2(0,0)
 	
 	dbgLog.print("\tpiece pos before %s" % piece.position)
 	dbgLog.print("\ttexturerect pos before %s" % piece.piece_texture_rect.position)
