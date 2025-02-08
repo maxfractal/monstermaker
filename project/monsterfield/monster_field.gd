@@ -25,6 +25,18 @@ class_name MonsterField extends PieceField
 #var new_piece_scene = preload("res://project/monsterpiece/monster_piece.tscn")
 
 #-------------------------------------------------------------------------------
+# monster field functions
+#-------------------------------------------------------------------------------
+func test_load_piece_head():
+	var texture_file_path = "res://art/Creatures/Pirate/SkeletonPirate_00_Head-straight.png"
+	generate_piece(pieces_holder, texture_file_path)
+	return;
+func test_load_piece_arm():
+	var texture_file_path = "res://art/Creatures/Pirate/SkeletonPirate_01_Arm-1-left.png"
+	generate_piece(pieces_holder, texture_file_path)
+	return;
+	
+#-------------------------------------------------------------------------------
 # piece dragging + dropping
 #-------------------------------------------------------------------------------
 func return_monsterpiece_starting_position(piece: MonsterPiece):
@@ -62,7 +74,7 @@ func monsterpiece_reposition(piece: MonsterPiece):
 		piece.reparent(pieces_holder)
 
 	#piece.pivot_offset = piece.get_global_mouse_position() - piece.global_position
-	piece.pivot_offset = Vector2(0,0)
+	#piece.pivot_offset = Vector2(50,50)
 	
 	dbgLog.print("\tpiece pos before %s" % piece.position)
 	dbgLog.print("\ttexturerect pos before %s" % piece.piece_texture_rect.position)
@@ -100,6 +112,15 @@ func monsterpiece_reposition(piece: MonsterPiece):
 #-------------------------------------------------------------------------------
 # parent class functions
 #-------------------------------------------------------------------------------
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("instantiate_piece1"):
+		test_load_piece_head()
+		return;
+	if event.is_action_pressed("instantiate_piece2"):
+		test_load_piece_arm()
+		return;
+	return;
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

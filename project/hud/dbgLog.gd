@@ -51,7 +51,7 @@ func _input(event: InputEvent) -> void:
 			self.visible = false
 		else:
 			self.visible = true
-
+	return;
 
 func print(msg1: String, msg2 = null, msg3 = null, msg4 = null, msg5 = null, msg6 = null) -> void:
 	var s: String = msg1 + "\n"			# string for dbg window (needs extra CRs)
