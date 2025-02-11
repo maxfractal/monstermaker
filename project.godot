@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 dbgLog="*res://project/hud/dbgLog.gd"
 
+[editor]
+
+movie_writer/movie_file="/Users/206414559/xrislab/godot/monstermaker/export/mm.avi"
+
 [input]
 
 mouse_left={
@@ -44,4 +48,5 @@ instantiate_piece2={
 
 [rendering]
 
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

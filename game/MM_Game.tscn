@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://crc4a3gvrtat3"]
+[gd_scene load_steps=4 format=3 uid="uid://crc4a3gvrtat3"]
 
 [ext_resource type="Texture2D" uid="uid://ej4t4jwynur5" path="res://art/GUI/background-horzv4-grad.png" id="1_xvj3o"]
+[ext_resource type="FontFile" uid="uid://b2d43atlx6nvu" path="res://art/GUI/font/alagard.ttf" id="2_yiqur"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d6acn"]
+font = ExtResource("2_yiqur")
+font_size = 68
+shadow_size = 6
+shadow_color = Color(0.0313726, 0.372549, 0.0313726, 0.168627)
 
 [node name="MmGame" type="Node2D"]
 
@@ -8,3 +15,20 @@
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_xvj3o")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 256.0
+offset_top = 21.0
+offset_right = 871.0
+offset_bottom = 99.0
+text = "Monster Maker v0.1"
+label_settings = SubResource("LabelSettings_d6acn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 484.0
+offset_top = 110.0
+offset_right = 639.0
+offset_bottom = 157.0
+text = "Monster Maker
+"

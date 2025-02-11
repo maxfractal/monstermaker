@@ -3,3 +3,4 @@
 /.godot
 *.tmp
 .vscode
+export/
